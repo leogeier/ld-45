@@ -10,6 +10,21 @@ export (float) var gravity_acceleration 		= 10
 const UP = Vector2(0,-1)
 var motion = Vector2()
 
+func _ready():
+	add_to_group("Player")
+	updateKeys()
+	
+#Needs to be called whenever a new Key Enters the Game
+func updateKeys():
+	var Keys = get_tree().get_nodes_in_group("Keys")
+	for i in Keys:
+		print("Connected to Key")
+		i.connect("CollectKey", self, "_on_CollectKey")
+
+func _on_CollectKey():
+	#print("Player Collected Key!")
+	pass
+
 #returns updated current motion
 #can be used for all acceleration purposes
 func accelerate_movement(var current_motion, var target_speed, var acceleration):
@@ -55,12 +70,12 @@ func update_motion():
 		motion.x = 0	
 	
 	if is_on_floor():	
-		print("on floor")
+		#print("on floor")
 		if Input.is_action_just_pressed("ui_up"):
 			
 			motion.y = -jump_speed
 	else:
-		print("not on floor")
+		#print("not on floor")
 		pass
 		
 		

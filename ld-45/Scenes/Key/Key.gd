@@ -2,8 +2,10 @@ extends Sprite
 
 var Collected
 export (String) var playerName = "KinematicBody2D"
+signal CollectKey
 
 func _ready():
+	#add_to_group("Keys")
 	set_visible(true)
 	Collected = false;
 
@@ -16,6 +18,8 @@ func _physics_process(delta):
 				collectBehaviour()
 
 func collectBehaviour():
+	emit_signal("CollectKey")
+	#print("I was collected")
 	set_visible(false) 
 	Collected = true
 	collectSound()

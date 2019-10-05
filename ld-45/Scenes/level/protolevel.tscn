@@ -16,5 +16,11 @@ movement_acceleration = 20
 jump_speed = 200
 gravity_max_speed = 200
 
+[node name="Key3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 62, 163 )
+
+[node name="Key2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 60, 122 )
+
 [node name="Key" parent="." instance=ExtResource( 3 )]
 position = Vector2( 60, 144 )

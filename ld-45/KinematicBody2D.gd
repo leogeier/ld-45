@@ -11,6 +11,7 @@ const UP = Vector2(0,-1)
 var motion = Vector2()
 var PlayerInput
 var jumptimer
+var jumppressed	:bool	#boolean
 
 	
 
@@ -53,16 +54,27 @@ func gravity_calculation():
 			motion.y = gravity_max_speed
 	
 	
-func jump_movement(delta):
-	if jumptimer <= 0 && !is_on_floor():
-		return
-	if is_on_floor():
+func calculate_jump_motion(delta):
+	if is_on_floor() && jumppressed == false:		
 		jumptimer = jumpaccelerant
-	else:
-		print(delta)
+		motion.y = -jump_speed
+	elif jumptimer > 0:
 		jumptimer -= delta
+		motion.y = -jump_speed
 	
-	motion.y = -jump_speed
+	
+	
+func jump_movement(delta):
+	#set the flag that the jumpbotton has been pressed
+	#calculate the new motion vector based on the jumptimer and floor
+	if PlayerInput.is_action_pressed("up"):		
+		calculate_jump_motion(delta)
+		jumppressed = true
+	#set the flag that the jumpbotton has been released	
+	#set jumptimer to 0 because the button has been released (stop accelerating)
+	else:
+		jumppressed = false
+		jumptimer = 0
 	
 		
 		
@@ -83,10 +95,7 @@ func update_motion(delta):
 	# add gravity to y axis
 	gravity_calculation()
 	#add jump to y axis
-	if PlayerInput.is_action_pressed("up"):
-		jump_movement(delta)
-	else:
-		jumptimer = 0
+	jump_movement(delta)
 
 
 
@@ -106,3 +115,4 @@ func _ready():
 	PlayerInput.set_action_key("left","a")
 	PlayerInput.set_action_key("up","w")
 	jumptimer = 0
+	jumppressed = false

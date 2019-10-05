@@ -34,12 +34,7 @@ func simple_x_movement(var direction):
 	
 	
 func gravity_calculation():
-	if is_on_floor():
-		print("on floor")
-		motion.y = 0
 		
-	else:
-		print("not on floor")	
 
 		motion.y += gravity_acceleration
 	
@@ -53,26 +48,26 @@ func gravity_calculation():
 func update_motion():
 	gravity_calculation()
 	if Input.is_action_pressed("ui_right"):
-		#simple_x_movement(1)
-		motion.x = movement_speed
+		simple_x_movement(1)		
 	elif Input.is_action_pressed("ui_left"):
 		simple_x_movement(-1)
 	else:
 		motion.x = 0	
 	
 	if is_on_floor():	
-		#print("on floor")
-		if Input.is_action_pressed("ui_up"):
+		print("on floor")
+		if Input.is_action_just_pressed("ui_up"):
 			
 			motion.y = -jump_speed
 	else:
-		#print("not on floor")
+		print("not on floor")
 		pass
 		
 		
 
 
 func _physics_process(delta):
-	move_and_slide(motion,UP)
+	
 	update_motion()
+	motion = move_and_slide(motion,UP)
 	pass

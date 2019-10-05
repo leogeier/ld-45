@@ -1,10 +1,10 @@
 extends Sprite
 
 var Collected
-export (String) var playerName = "Player"
+export (String) var playerName = "KinematicBody2D"
 
 func _ready():
-	set_visible(false)
+	set_visible(true)
 	Collected = false;
 
 #check for collision with Node called "Player"
@@ -16,7 +16,7 @@ func _physics_process(delta):
 				collectBehaviour()
 
 func collectBehaviour():
-	get_parent().set_visible(false) 
+	set_visible(false) 
 	Collected = true
 	collectSound()
 	get_parent().remove_child(self)

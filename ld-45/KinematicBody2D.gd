@@ -5,14 +5,14 @@ export (int) var movement_acceleration 		= 10
 export (int) var jump_speed 		= 10
 export (int) var gravity_max_speed 		= 50
 export (float) var gravity_acceleration 		= 10
+export (float) var jumpaccelerant 		= 10
 
 const UP = Vector2(0,-1)
 var motion = Vector2()
 var PlayerInput
+var jumptimer
+var jumppressed	:bool	#boolean
 
-	
-func change_direction():
-	pass
 	
 
 #returns updated current motion
@@ -45,7 +45,6 @@ func simple_x_movement( direction):
 		get_node("AnimatedSprite").set_flip_h( false )
 	
 	motion.x = accelerate_movement(motion.x,movement_speed * direction, movement_acceleration * direction)
-	print(motion.x)
 	
 	
 func gravity_calculation():
@@ -55,10 +54,33 @@ func gravity_calculation():
 			motion.y = gravity_max_speed
 	
 	
-
+func calculate_jump_motion(delta):
+	if is_on_floor() && jumppressed == false:		
+		jumptimer = jumpaccelerant
+		motion.y = -jump_speed
+	elif jumptimer > 0:
+		jumptimer -= delta
+		motion.y = -jump_speed
+	
+	
+	
+func jump_movement(delta):
+	#set the flag that the jumpbotton has been pressed
+	#calculate the new motion vector based on the jumptimer and floor
+	if PlayerInput.is_action_pressed("up"):		
+		calculate_jump_motion(delta)
+		jumppressed = true
+	#set the flag that the jumpbotton has been released	
+	#set jumptimer to 0 because the button has been released (stop accelerating)
+	else:
+		jumppressed = false
+		jumptimer = 0
+	
+		
+		
 
 #updates the motion vector
-func update_motion():
+func update_motion(delta):
 	#add x axis movement	
 	if PlayerInput.is_action_pressed("right"):
 		simple_x_movement(1)
@@ -73,18 +95,17 @@ func update_motion():
 	# add gravity to y axis
 	gravity_calculation()
 	#add jump to y axis
-	if PlayerInput.is_action_pressed("up") && is_on_floor():
-		motion.y = -jump_speed
+	jump_movement(delta)
 
 
 
 
 func _physics_process(delta):
 	#update motion vector
-	update_motion()
+	update_motion(delta)
 	#moving and sliding around
 	motion = move_and_slide(motion,UP)
-	pass
+	
 	
 	
 func _ready():
@@ -93,3 +114,5 @@ func _ready():
 	PlayerInput.set_action_key("right","d")
 	PlayerInput.set_action_key("left","a")
 	PlayerInput.set_action_key("up","w")
+	jumptimer = 0
+	jumppressed = false

@@ -12,6 +12,7 @@ tile_data = PoolIntArray( 0, 9, 0, 1, 7, 0, 2, 7, 0, 3, 7, 0, 4, 7, 0, 5, 7, 0, 
 position = Vector2( 136, 136 )
 movement_speed = 100
 movement_acceleration = 20
-jump_speed = 200
+jump_speed = 100
 gravity_max_speed = 200
+jumpaccelerant = 0.15
 

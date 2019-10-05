@@ -11,6 +11,9 @@ var motion = Vector2()
 var PlayerInput
 
 	
+func change_direction():
+	pass
+	
 
 #returns updated current motion
 #can be used for all acceleration purposes
@@ -31,8 +34,15 @@ func accelerate_movement(var current_motion, var target_speed, var acceleration)
 #direction = 1 : right movement
 #direction = -1 : left movement
 func simple_x_movement( direction):
+	get_node("AnimatedSprite").play()
+	
 	if motion.x * direction <= 0:
 		motion.x = 0
+	
+	if direction > 0:
+		get_node("AnimatedSprite").set_flip_h( true )
+	else:
+		get_node("AnimatedSprite").set_flip_h( false )
 	
 	motion.x = accelerate_movement(motion.x,movement_speed * direction, movement_acceleration * direction)
 	print(motion.x)
@@ -49,16 +59,16 @@ func gravity_calculation():
 
 #updates the motion vector
 func update_motion():
-	#add x axis movement
-	#if Input.is_action_pressed("ui_right"):
+	#add x axis movement	
 	if PlayerInput.is_action_pressed("right"):
-		print("move right")
 		simple_x_movement(1)
-	#elif Input.is_action_pressed("ui_left"):
+		
 	elif PlayerInput.is_action_pressed("left"):
 		simple_x_movement(-1)
+
 	else:
-		motion.x = 0	
+		motion.x = 0
+		get_node("AnimatedSprite").stop()	
 		
 	# add gravity to y axis
 	gravity_calculation()
@@ -66,12 +76,7 @@ func update_motion():
 	if PlayerInput.is_action_pressed("up") && is_on_floor():
 		motion.y = -jump_speed
 
-func _ready():
-	PlayerInput = preload("res://Scenes/Player/PlayerInput.gd").new()
-	PlayerInput._init()
-	PlayerInput.set_action_key("right","d")
-	PlayerInput.set_action_key("left","a")
-	PlayerInput.set_action_key("up","w")
+
 
 
 func _physics_process(delta):
@@ -80,3 +85,11 @@ func _physics_process(delta):
 	#moving and sliding around
 	motion = move_and_slide(motion,UP)
 	pass
+	
+	
+func _ready():
+	PlayerInput = preload("res://Scenes/Player/PlayerInput.gd").new()
+	PlayerInput._init()
+	PlayerInput.set_action_key("right","d")
+	PlayerInput.set_action_key("left","a")
+	PlayerInput.set_action_key("up","w")

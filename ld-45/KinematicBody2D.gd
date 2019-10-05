@@ -3,40 +3,76 @@ extends KinematicBody2D
 # externs:
 export (int) var movement_speed = 50
 export (int) var movement_acceleration 		= 10
-export (int) var gravity 		= 50
+export (int) var jump_speed 		= 10
+export (int) var gravity_max_speed 		= 50
+export (float) var gravity_acceleration 		= 10
 
-
+const UP = Vector2(0,-1)
 var motion = Vector2()
 
-#return the updated motion vector
+#returns updated current motion
+#can be used for all acceleration purposes
+func accelerate_movement(var current_motion, var target_speed, var acceleration):
+		
+	if abs(current_motion) < abs(target_speed):
+		current_motion += acceleration
+	
+	if abs(current_motion) > abs(target_speed):
+		current_motion = target_speed
+		
+	return current_motion
+	
+
+#updates the motion vector
 #direction = 1 : right movement
 #direction = -1 : left movement
-func simple_x_movement(var motion,var direction):
-	#if movement has not reached target speed accelerate:
+func simple_x_movement(var direction):
 	if motion.x * direction <= 0:
 		motion.x = 0
 	
-	if abs(motion.x) < movement_speed:
-		motion.x = motion.x + movement_acceleration * direction
-	#if motion vector has surpassed movement speed reset to max speed
-	if abs(motion.x) >= movement_speed:
-		motion.x = movement_speed * direction	
+	motion.x = accelerate_movement(motion.x,movement_speed * direction, movement_acceleration * direction)
 	
 	
-	return motion.x
-
-#returns the updated vector
-func update_motion(var vector):
-	if Input.is_action_pressed("ui_right"):
-		vector.x =  simple_x_movement(motion,1)
-	elif Input.is_action_pressed("ui_left"):
-		vector.x =  simple_x_movement(motion,-1)
+func gravity_calculation():
+	if is_on_floor():
+		print("on floor")
+		motion.y = 0
+		
 	else:
-		vector.x = 0	
-	vector.y = gravity
-	return vector
+		print("not on floor")	
+
+		motion.y += gravity_acceleration
+	
+		if motion.y >= gravity_max_speed:
+			motion.y = gravity_max_speed
+	
+	
+
+
+#updates the motion vector
+func update_motion():
+	gravity_calculation()
+	if Input.is_action_pressed("ui_right"):
+		#simple_x_movement(1)
+		motion.x = movement_speed
+	elif Input.is_action_pressed("ui_left"):
+		simple_x_movement(-1)
+	else:
+		motion.x = 0	
+	
+	if is_on_floor():	
+		#print("on floor")
+		if Input.is_action_pressed("ui_up"):
+			
+			motion.y = -jump_speed
+	else:
+		#print("not on floor")
+		pass
+		
+		
+
 
 func _physics_process(delta):
-	motion = update_motion(motion)
-	move_and_slide(motion)
+	move_and_slide(motion,UP)
+	update_motion()
 	pass

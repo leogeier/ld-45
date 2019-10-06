@@ -34,7 +34,17 @@ func _on_CollectKey():
 		print(movement_actions[collected_actions] + "is now " + key)
 		PlayerInput.set_action_key(movement_actions[collected_actions],key)
 		collected_actions += 1
-	pass
+		return
+	if key == null:
+		print("you win")
+		return
+		
+	movement_actions.shuffle()
+	print(movement_actions[0] + " is now " + key)
+	PlayerInput.set_action_key(movement_actions[0],key)
+		
+		
+	
 
 #returns updated current motion
 #can be used for all acceleration purposes

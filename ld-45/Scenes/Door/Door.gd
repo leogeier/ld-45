@@ -12,7 +12,7 @@ func _ready():
 
 func set_closed(value: bool) -> void:
 	closed = value
-	if not has_node("Sprite"):
+	if sprite == null or collisionShape == null:
 		return
 	
 	if closed:

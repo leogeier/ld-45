@@ -9,6 +9,7 @@ export (float) var jumpaccelerant 		= 10
 export (float) var	gracetime			= 0.1
 export (int) var x_width 		= 312.8
 export (int) var	y_height			= 200
+export (bool) var	wasd_controls			= false
 
 const UP = Vector2(0,-1)
 var motion = Vector2()
@@ -31,6 +32,8 @@ func updateKeys():
 	
 
 func _on_CollectKey():	
+	if wasd_controls:
+		return
 	var key = alphabet.pop_front()
 	if collected_actions <= 2:
 		print(movement_actions[collected_actions] + "is now " + key)
@@ -168,4 +171,9 @@ func _ready():
 	gracetimer_calculator = gracetime
 	randomize()
 	alphabet.shuffle()
-	_on_CollectKey()
+	if wasd_controls:
+		PlayerInput.set_action_key("up","w")
+		PlayerInput.set_action_key("left","a")
+		PlayerInput.set_action_key("right","d")
+	else:
+		_on_CollectKey()

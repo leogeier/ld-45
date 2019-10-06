@@ -25,7 +25,7 @@ func updateKeys():
 
 func _on_CollectKey():
 	emit_signal("PlayerConnectedKey")
-	#print("Player Collected Key!")
+	print("Player Collected Key!")
 	pass
 
 #returns updated current motion

@@ -1,0 +1,19 @@
+Sounds for the Game:
+
+
+Master Ansagen:
+	Very new Game 		-Gong
+	new Key
+	Game Over/Lachen
+	New Game Layout
+	missed a Key/Key dissapeared Ansage
+	
+Player Sounds
+	DeathSound
+	Jump
+	Collect new Key		-yepeee!
+	running?			
+	reaction to Key dissapeared
+	
+	
+	

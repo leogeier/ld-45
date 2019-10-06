@@ -63,16 +63,124 @@ gravity_acceleration = 7.0
 tile_set = SubResource( 3 )
 cell_size = Vector2( 8, 8 )
 format = 1
-tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 16, 0, 0, 17, 0, 0, 18, 0, 0, 19, 0, 0, 20, 0, 0, 21, 0, 0, 22, 0, 0, 23, 0, 0, 24, 0, 0, 25, 0, 0, 26, 0, 0, 27, 0, 0, 28, 0, 0, 29, 0, 0, 30, 0, 0, 31, 0, 0, 32, 0, 0, 33, 0, 0, 34, 0, 0, 35, 0, 0, 36, 0, 0, 37, 0, 0, 38, 0, 0, 39, 0, 0, 65536, 0, 0, 65575, 0, 0, 131072, 0, 0, 131111, 0, 0, 196608, 0, 0, 196647, 0, 0, 262144, 0, 0, 262183, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 327692, 0, 0, 327693, 0, 0, 327694, 0, 0, 327695, 0, 0, 327696, 0, 0, 327697, 0, 0, 327698, 0, 0, 327699, 0, 0, 327700, 0, 0, 327701, 0, 0, 327702, 0, 0, 327703, 0, 0, 327704, 0, 0, 327705, 0, 0, 327706, 0, 0, 327707, 0, 0, 327708, 0, 0, 327709, 0, 0, 327710, 0, 0, 327711, 0, 0, 327712, 0, 0, 327713, 0, 0, 327714, 0, 0, 327715, 0, 0, 327716, 0, 0, 327717, 0, 0, 327718, 0, 0, 327719, 0, 0, 393216, 0, 0, 393255, 0, 0, 458752, 0, 0, 458791, 0, 0, 524288, 0, 0, 524327, 0, 0, 589824, 0, 0, 589863, 0, 0, 655360, 0, 0, 655361, 0, 0, 655362, 0, 0, 655363, 0, 0, 655364, 0, 0, 655365, 0, 0, 655366, 0, 0, 655367, 0, 0, 655368, 0, 0, 655369, 0, 0, 655370, 0, 0, 655371, 0, 0, 655372, 0, 0, 655373, 0, 0, 655374, 0, 0, 655375, 0, 0, 655376, 0, 0, 655377, 0, 0, 655378, 0, 0, 655379, 0, 0, 655380, 0, 0, 655381, 0, 0, 655382, 0, 0, 655383, 0, 0, 655384, 0, 0, 655385, 0, 0, 655386, 0, 0, 655387, 0, 0, 655388, 0, 0, 655389, 0, 0, 655390, 0, 0, 655391, 0, 0, 655392, 0, 0, 655393, 0, 0, 655394, 0, 0, 655395, 0, 0, 655396, 0, 0, 655397, 0, 0, 655398, 0, 0, 655399, 0, 0, 720896, 0, 0, 720935, 0, 0, 786432, 0, 0, 786471, 0, 0, 851968, 0, 0, 852007, 0, 0, 917504, 0, 0, 917543, 0, 0, 983040, 0, 0, 983041, 0, 0, 983042, 0, 0, 983043, 0, 0, 983044, 0, 0, 983045, 0, 0, 983046, 0, 0, 983047, 0, 0, 983048, 0, 0, 983049, 0, 0, 983050, 0, 0, 983051, 0, 0, 983052, 0, 0, 983053, 0, 0, 983054, 0, 0, 983055, 0, 0, 983056, 0, 0, 983057, 0, 0, 983058, 0, 0, 983059, 0, 0, 983060, 0, 0, 983061, 0, 0, 983062, 0, 0, 983063, 0, 0, 983064, 0, 0, 983065, 0, 0, 983066, 0, 0, 983067, 0, 0, 983068, 0, 0, 983069, 0, 0, 983070, 0, 0, 983071, 0, 0, 983072, 0, 0, 983073, 0, 0, 983074, 0, 0, 983075, 0, 0, 983076, 0, 0, 983077, 0, 0, 983078, 0, 0, 983079, 0, 0, 1048576, 0, 0, 1048615, 0, 0, 1114112, 0, 0, 1114151, 0, 0, 1179648, 0, 0, 1179687, 0, 0, 1245184, 0, 0, 1245223, 0, 0, 1310720, 0, 0, 1310721, 0, 0, 1310722, 0, 0, 1310723, 0, 0, 1310724, 0, 0, 1310725, 0, 0, 1310726, 0, 0, 1310727, 0, 0, 1310728, 0, 0, 1310729, 0, 0, 1310730, 0, 0, 1310731, 0, 0, 1310732, 0, 0, 1310733, 0, 0, 1310734, 0, 0, 1310735, 0, 0, 1310736, 0, 0, 1310737, 0, 0, 1310738, 0, 0, 1310739, 0, 0, 1310740, 0, 0, 1310741, 0, 0, 1310742, 0, 0, 1310743, 0, 0, 1310744, 0, 0, 1310745, 0, 0, 1310746, 0, 0, 1310747, 0, 0, 1310748, 0, 0, 1310749, 0, 0, 1310750, 0, 0, 1310751, 0, 0, 1310752, 0, 0, 1310753, 0, 0, 1310754, 0, 0, 1310755, 0, 0, 1310756, 0, 0, 1310757, 0, 0, 1310758, 0, 0, 1310759, 0, 0 )
+tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 16, 0, 0, 17, 0, 0, 18, 0, 0, 19, 0, 0, 20, 0, 0, 21, 0, 0, 22, 0, 0, 23, 0, 0, 24, 0, 0, 25, 0, 0, 26, 0, 0, 27, 0, 0, 28, 0, 0, 29, 0, 0, 30, 0, 0, 31, 0, 0, 32, 0, 0, 33, 0, 0, 34, 0, 0, 35, 0, 0, 36, 0, 0, 37, 0, 0, 38, 0, 0, 39, 0, 0, 327680, 0, 0, 327685, 0, 0, 327686, 0, 0, 327691, 0, 0, 327692, 0, 0, 327693, 0, 0, 327698, 0, 0, 327699, 0, 0, 327700, 0, 0, 327701, 0, 0, 327702, 0, 0, 327703, 0, 0, 327704, 0, 0, 327705, 0, 0, 327706, 0, 0, 327707, 0, 0, 327712, 0, 0, 327713, 0, 0, 327714, 0, 0, 327719, 0, 0, 655360, 0, 0, 655365, 0, 0, 655366, 0, 0, 655367, 0, 0, 655372, 0, 0, 655373, 0, 0, 655374, 0, 0, 655379, 0, 0, 655384, 0, 0, 655385, 0, 0, 655386, 0, 0, 655387, 0, 0, 655392, 0, 0, 655393, 0, 0, 655394, 0, 0, 655399, 0, 0, 983040, 0, 0, 983041, 0, 0, 983042, 0, 0, 983047, 0, 0, 983048, 0, 0, 983049, 0, 0, 983050, 0, 0, 983051, 0, 0, 983052, 0, 0, 983053, 0, 0, 983054, 0, 0, 983059, 0, 0, 983064, 0, 0, 983065, 0, 0, 983066, 0, 0, 983067, 0, 0, 983068, 0, 0, 983069, 0, 0, 983070, 0, 0, 983071, 0, 0, 983072, 0, 0, 983077, 0, 0, 983078, 0, 0, 983079, 0, 0, 1310720, 0, 0, 1310721, 0, 0, 1310722, 0, 0, 1310723, 0, 0, 1310724, 0, 0, 1310725, 0, 0, 1310726, 0, 0, 1310727, 0, 0, 1310728, 0, 0, 1310729, 0, 0, 1310730, 0, 0, 1310731, 0, 0, 1310732, 0, 0, 1310733, 0, 0, 1310734, 0, 0, 1310735, 0, 0, 1310736, 0, 0, 1310737, 0, 0, 1310738, 0, 0, 1310739, 0, 0, 1310740, 0, 0, 1310741, 0, 0, 1310742, 0, 0, 1310743, 0, 0, 1310744, 0, 0, 1310745, 0, 0, 1310746, 0, 0, 1310747, 0, 0, 1310748, 0, 0, 1310749, 0, 0, 1310750, 0, 0, 1310751, 0, 0, 1310752, 0, 0, 1310753, 0, 0, 1310754, 0, 0, 1310755, 0, 0, 1310756, 0, 0, 1310757, 0, 0, 1310758, 0, 0, 1310759, 0, 0 )
 
 [node name="Doors" type="Node2D" parent="."]
 
 [node name="Door 1" parent="Doors" instance=ExtResource( 4 )]
-position = Vector2( 88, 64.1473 )
+position = Vector2( 0, 8 )
 closed = false
 
 [node name="Door 2" parent="Doors" instance=ExtResource( 4 )]
-position = Vector2( 168, 64.1473 )
+position = Vector2( 104, 8 )
+
+[node name="Door 3" parent="Doors" instance=ExtResource( 4 )]
+position = Vector2( 208, 8 )
+
+[node name="Door 4" parent="Doors" instance=ExtResource( 4 )]
+position = Vector2( 312, 8 )
+
+[node name="Door 5" parent="Doors" instance=ExtResource( 4 )]
+position = Vector2( 0, 48 )
+
+[node name="Door 6" parent="Doors" instance=ExtResource( 4 )]
+position = Vector2( 40, 48 )
+
+[node name="Door 7" parent="Doors" instance=ExtResource( 4 )]
+position = Vector2( 152, 48 )
+
+[node name="Door 8" parent="Doors" instance=ExtResource( 4 )]
+position = Vector2( 272, 48 )
+
+[node name="Door 9" parent="Doors" instance=ExtResource( 4 )]
+position = Vector2( 312, 48 )
+
+[node name="Door 10" parent="Doors" instance=ExtResource( 4 )]
+position = Vector2( 0, 88 )
+
+[node name="Door 11" parent="Doors" instance=ExtResource( 4 )]
+position = Vector2( 112, 88 )
+
+[node name="Door 12" parent="Doors" instance=ExtResource( 4 )]
+position = Vector2( 192, 88 )
+
+[node name="Door 13" parent="Doors" instance=ExtResource( 4 )]
+position = Vector2( 312, 88 )
+
+[node name="Door 14" parent="Doors" instance=ExtResource( 4 )]
+position = Vector2( 0, 128 )
+
+[node name="Door 15" parent="Doors" instance=ExtResource( 4 )]
+position = Vector2( 80, 128 )
+
+[node name="Door 16" parent="Doors" instance=ExtResource( 4 )]
+position = Vector2( 232, 128 )
+
+[node name="Door 17" parent="Doors" instance=ExtResource( 4 )]
+position = Vector2( 152, 128 )
+
+[node name="Door 18" parent="Doors" instance=ExtResource( 4 )]
+position = Vector2( 312, 128 )
+
+[node name="Door 19" parent="Doors" instance=ExtResource( 4 )]
+position = Vector2( 8, 48 )
+rotation = -1.57079
+
+[node name="Door 20" parent="Doors" instance=ExtResource( 4 )]
+position = Vector2( 56, 48 )
+rotation = -1.57079
+
+[node name="Door 21" parent="Doors" instance=ExtResource( 4 )]
+position = Vector2( 112, 48 )
+rotation = -1.57079
+
+[node name="Door 22" parent="Doors" instance=ExtResource( 4 )]
+position = Vector2( 224, 48 )
+rotation = -1.57079
+
+[node name="Door 23" parent="Doors" instance=ExtResource( 4 )]
+position = Vector2( 280, 48 )
+rotation = -1.57079
+
+[node name="Door 24" parent="Doors" instance=ExtResource( 4 )]
+position = Vector2( 280, 88 )
+rotation = -1.57079
+
+[node name="Door 25" parent="Doors" instance=ExtResource( 4 )]
+position = Vector2( 224, 88 )
+rotation = -1.57079
+
+[node name="Door 26" parent="Doors" instance=ExtResource( 4 )]
+position = Vector2( 160, 88 )
+rotation = -1.57079
+
+[node name="Door 27" parent="Doors" instance=ExtResource( 4 )]
+position = Vector2( 120, 88 )
+rotation = -1.57079
+
+[node name="Door 28" parent="Doors" instance=ExtResource( 4 )]
+position = Vector2( 64, 88 )
+rotation = -1.57079
+
+[node name="Door 29" parent="Doors" instance=ExtResource( 4 )]
+position = Vector2( 8, 88 )
+rotation = -1.57079
+
+[node name="Door 30" parent="Doors" instance=ExtResource( 4 )]
+position = Vector2( 24, 128 )
+rotation = -1.57079
+
+[node name="Door 31" parent="Doors" instance=ExtResource( 4 )]
+position = Vector2( 120, 128 )
+rotation = -1.57079
+
+[node name="Door 32" parent="Doors" instance=ExtResource( 4 )]
+position = Vector2( 160, 128 )
+rotation = -1.57079
+
+[node name="Door 33" parent="Doors" instance=ExtResource( 4 )]
+position = Vector2( 264, 128 )
+rotation = -1.57079
 
 [node name="Spawners" type="Node2D" parent="."]
 
@@ -80,4 +188,46 @@ position = Vector2( 168, 64.1473 )
 position = Vector2( 296, 71.6473 )
 
 [node name="Spawner 2" parent="Spawners" instance=ExtResource( 5 )]
-position = Vector2( 20, 72 )
+position = Vector2( 24, 71.6473 )
+
+[node name="Spawner 3" parent="Spawners" instance=ExtResource( 5 )]
+position = Vector2( 72, 32 )
+
+[node name="Spawner 4" parent="Spawners" instance=ExtResource( 5 )]
+position = Vector2( 156, 32 )
+
+[node name="Spawner 5" parent="Spawners" instance=ExtResource( 5 )]
+position = Vector2( 248, 32 )
+
+[node name="Spawner 6" parent="Spawners" instance=ExtResource( 5 )]
+position = Vector2( 236, 112 )
+
+[node name="Spawner 7" parent="Spawners" instance=ExtResource( 5 )]
+position = Vector2( 156, 112 )
+
+[node name="Spawner 8" parent="Spawners" instance=ExtResource( 5 )]
+position = Vector2( 84, 112 )
+
+[node name="Spawner 9" parent="Spawners" instance=ExtResource( 5 )]
+position = Vector2( 28, 112 )
+
+[node name="Spawner 10" parent="Spawners" instance=ExtResource( 5 )]
+position = Vector2( 296, 112 )
+
+[node name="Spawner 11" parent="Spawners" instance=ExtResource( 5 )]
+position = Vector2( 276, 152 )
+
+[node name="Spawner 12" parent="Spawners" instance=ExtResource( 5 )]
+position = Vector2( 196, 152 )
+
+[node name="Spawner 13" parent="Spawners" instance=ExtResource( 5 )]
+position = Vector2( 120, 152 )
+
+[node name="Spawner 14" parent="Spawners" instance=ExtResource( 5 )]
+position = Vector2( 44, 152 )
+
+[node name="Spawner 15" parent="Spawners" instance=ExtResource( 5 )]
+position = Vector2( 116, 71.6473 )
+
+[node name="Spawner 16" parent="Spawners" instance=ExtResource( 5 )]
+position = Vector2( 196, 71.6473 )

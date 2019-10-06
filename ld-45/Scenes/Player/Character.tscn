@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://KinematicBody2D.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Player/assets/playerIdle.png" type="Texture" id=2]
@@ -10,6 +10,27 @@
 [ext_resource path="res://Scenes/Player/assets/run/playerRun6.png" type="Texture" id=8]
 [ext_resource path="res://Scenes/Player/assets/run/playerRun7.png" type="Texture" id=9]
 [ext_resource path="res://Scenes/Player/assets/run/playerRun8.png" type="Texture" id=10]
+[ext_resource path="res://Sounds/Player/jump1.wav" type="AudioStream" id=11]
+[ext_resource path="res://Sounds/Player/jump2.wav" type="AudioStream" id=12]
+[ext_resource path="res://Sounds/Player/jump3.wav" type="AudioStream" id=13]
+[ext_resource path="res://Sounds/Player/jump4.wav" type="AudioStream" id=14]
+[ext_resource path="res://Sounds/Player/death1.wav" type="AudioStream" id=15]
+[ext_resource path="res://Sounds/Player/death2.wav" type="AudioStream" id=16]
+[ext_resource path="res://Sounds/Player/key1.wav" type="AudioStream" id=17]
+[ext_resource path="res://Sounds/Player/key2.wav" type="AudioStream" id=18]
+[ext_resource path="res://Sounds/Player/key3.wav" type="AudioStream" id=19]
+[ext_resource path="res://Sounds/Player/key4.wav" type="AudioStream" id=20]
+[ext_resource path="res://Sounds/Player/key5.wav" type="AudioStream" id=21]
+[ext_resource path="res://Sounds/Player/key6.wav" type="AudioStream" id=22]
+[ext_resource path="res://Sounds/Player/key7.wav" type="AudioStream" id=23]
+[ext_resource path="res://Sounds/Player/key8.wav" type="AudioStream" id=24]
+[ext_resource path="res://Sounds/Player/key9.wav" type="AudioStream" id=25]
+[ext_resource path="res://Sounds/GameMaster/late1.wav" type="AudioStream" id=26]
+[ext_resource path="res://Sounds/GameMaster/late2.wav" type="AudioStream" id=27]
+[ext_resource path="res://Sounds/GameMaster/late3.wav" type="AudioStream" id=28]
+[ext_resource path="res://Sounds/GameMaster/late4.wav" type="AudioStream" id=29]
+[ext_resource path="res://Sounds/GameMaster/late5.wav" type="AudioStream" id=30]
+[ext_resource path="res://Sounds/GameMaster/late6.wav" type="AudioStream" id=31]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 7.5 )
@@ -42,6 +63,79 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 2 )
 animation = "run"
-frame = 5
+frame = 2
 playing = true
 
+[node name="JumpSounds" type="Node" parent="."]
+editor/display_folded = true
+
+[node name="jump1" type="AudioStreamPlayer2D" parent="JumpSounds"]
+stream = ExtResource( 11 )
+
+[node name="jump2" type="AudioStreamPlayer2D" parent="JumpSounds"]
+stream = ExtResource( 12 )
+
+[node name="jump3" type="AudioStreamPlayer2D" parent="JumpSounds"]
+stream = ExtResource( 13 )
+
+[node name="jump4" type="AudioStreamPlayer2D" parent="JumpSounds"]
+stream = ExtResource( 14 )
+
+[node name="DeathSounds" type="Node" parent="."]
+editor/display_folded = true
+
+[node name="death1" type="AudioStreamPlayer2D" parent="DeathSounds"]
+stream = ExtResource( 15 )
+
+[node name="death2" type="AudioStreamPlayer2D" parent="DeathSounds"]
+stream = ExtResource( 16 )
+
+[node name="CollectSounds" type="Node" parent="."]
+editor/display_folded = true
+
+[node name="key1" type="AudioStreamPlayer2D" parent="CollectSounds"]
+stream = ExtResource( 17 )
+
+[node name="key2" type="AudioStreamPlayer2D" parent="CollectSounds"]
+stream = ExtResource( 18 )
+
+[node name="key3" type="AudioStreamPlayer2D" parent="CollectSounds"]
+stream = ExtResource( 19 )
+
+[node name="key4" type="AudioStreamPlayer2D" parent="CollectSounds"]
+stream = ExtResource( 20 )
+
+[node name="key5" type="AudioStreamPlayer2D" parent="CollectSounds"]
+stream = ExtResource( 21 )
+
+[node name="key6" type="AudioStreamPlayer2D" parent="CollectSounds"]
+stream = ExtResource( 22 )
+
+[node name="key7" type="AudioStreamPlayer2D" parent="CollectSounds"]
+stream = ExtResource( 23 )
+
+[node name="key8" type="AudioStreamPlayer2D" parent="CollectSounds"]
+stream = ExtResource( 24 )
+
+[node name="key9" type="AudioStreamPlayer2D" parent="CollectSounds"]
+stream = ExtResource( 25 )
+
+[node name="LateSounds" type="Node" parent="."]
+
+[node name="late1" type="AudioStreamPlayer2D" parent="LateSounds"]
+stream = ExtResource( 26 )
+
+[node name="late2" type="AudioStreamPlayer2D" parent="LateSounds"]
+stream = ExtResource( 27 )
+
+[node name="late3" type="AudioStreamPlayer2D" parent="LateSounds"]
+stream = ExtResource( 28 )
+
+[node name="late4" type="AudioStreamPlayer2D" parent="LateSounds"]
+stream = ExtResource( 29 )
+
+[node name="late5" type="AudioStreamPlayer2D" parent="LateSounds"]
+stream = ExtResource( 30 )
+
+[node name="late6" type="AudioStreamPlayer2D" parent="LateSounds"]
+stream = ExtResource( 31 )

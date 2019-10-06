@@ -35,11 +35,12 @@ func _physics_process(delta):
 	TimeLeft -=delta
 
 func delete_self():
-	print("I wasn't collected!")
+	#print("I wasn't collected!")
+	Player.late_sound()
 	set_visible(false) 
 	get_parent().remove_child(self)
 	queue_free()
-	#add Sound for failure
+
 
 func collectBehaviour():
 	emit_signal("CollectKey")
@@ -61,6 +62,10 @@ func collectSound():
 	#print("Play sound: ", random)
 	#get_node(path).play(0.000001)
 	pass
+
+	
+
+
 
 func _on_Area2D_body_entered(body):
 	var bodies = $KinematicBody2D/Area2D.get_overlapping_bodies()

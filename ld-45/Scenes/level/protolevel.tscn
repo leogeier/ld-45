@@ -20,11 +20,11 @@ gravity_max_speed = 1000
 jumpaccelerant = 0.15
 
 [node name="Spawner" parent="." instance=ExtResource( 3 )]
-position = Vector2( 245, 122 )
+position = Vector2( 80, 144 )
 Level = 1
 
 [node name="Key" parent="." instance=ExtResource( 4 )]
-position = Vector2( 201, 55 )
+position = Vector2( 119, 136 )
 hasGravity = true
 GravitySpeed = 30
 
@@ -32,10 +32,10 @@ GravitySpeed = 30
 position = Vector2( -59, 55 )
 
 [node name="Spawner2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 149, 168 )
+position = Vector2( 64, 144 )
 
 [node name="Spawner4" parent="." instance=ExtResource( 3 )]
-position = Vector2( 98, 172 )
+position = Vector2( 102, 144 )
 
 [node name="Spawner3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 60, 49 )
+position = Vector2( 41, 144 )

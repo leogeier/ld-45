@@ -16,6 +16,11 @@ var active_spawners = []
 func _ready():
 	if init_config_file != "":
 		load_arena_config(init_config_file)
+		
+	if enable_config_saving:
+		for s in spawners.get_children():
+			if s.active:
+				s.spawn()
 
 # warning-ignore:unused_argument
 func _process(delta):

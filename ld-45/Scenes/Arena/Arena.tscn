@@ -55,9 +55,11 @@ init_config_file = "config-1570373863.json"
 
 [node name="KinematicBody2D" parent="." instance=ExtResource( 2 )]
 position = Vector2( 132.783, 63.6473 )
+movement_speed = 100
 jump_speed = 200
-gravity_max_speed = 200
-gravity_acceleration = 7.0
+gravity_max_speed = 1000
+jumpaccelerant = 0.05
+wasd_controls = true
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 3 )
@@ -69,7 +71,6 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 
 
 [node name="Door 1" parent="Doors" instance=ExtResource( 4 )]
 position = Vector2( 0, 8 )
-closed = false
 
 [node name="Door 2" parent="Doors" instance=ExtResource( 4 )]
 position = Vector2( 104, 8 )
@@ -230,4 +231,4 @@ position = Vector2( 44, 152 )
 position = Vector2( 116, 71.6473 )
 
 [node name="Spawner 16" parent="Spawners" instance=ExtResource( 5 )]
-position = Vector2( 196, 71.6473 )
+position = Vector2( 208, 72 )

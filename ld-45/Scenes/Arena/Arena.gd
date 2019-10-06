@@ -8,7 +8,9 @@ export(bool) var enable_config_saving = false
 export(String) var init_config_file = ""
 
 onready var doors = $Doors
+onready var spawners = $Spawners
 var already_saved_config = false
+var active_spawners = []
 
 
 func _ready():
@@ -31,12 +33,17 @@ func get_arena_config() -> Dictionary:
 	var config = {
 		# all closed doors are saved to this array
 		"doors": [],
+		# all active spawners are saved to this array
 		"spawners": []
 	}
 	
 	for door in doors.get_children():
 		if door.get_closed():
 			config["doors"].append(door.get_name())
+	
+	for spawner in spawners.get_children():
+		if spawner.active:
+			config["spawners"].append(spawner.get_name())
 	
 	return config
 
@@ -75,3 +82,10 @@ func apply_config(config: Dictionary) -> void:
 		
 	for door in config["doors"]:
 		doors.find_node(door).set_closed(true)
+	
+	active_spawners.clear()
+	for spawner in config["spawners"]:
+		active_spawners.append(spawners.find_node(spawner))
+	
+	for s in active_spawners:
+		s.spawn()

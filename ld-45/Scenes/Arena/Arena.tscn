@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Arena/Arena.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Player/Character.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Arena/assets/arenaTileset.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/Door/Door.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Spawner/Spawner.tscn" type="PackedScene" id=5]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
@@ -45,7 +46,9 @@ points = PoolVector2Array( 0, 0, 8, 0, 8, 4, 0, 4 )
 } ]
 1/z_index = 0
 
-[node name="Arena" type="Node2D"]
+[node name="Arena" type="Node2D" groups=[
+"Map",
+]]
 script = ExtResource( 1 )
 enable_config_saving = true
 init_config_file = "config-1570373863.json"
@@ -70,3 +73,11 @@ closed = false
 
 [node name="Door 2" parent="Doors" instance=ExtResource( 4 )]
 position = Vector2( 168, 64.1473 )
+
+[node name="Spawners" type="Node2D" parent="."]
+
+[node name="Spawner 1" parent="Spawners" instance=ExtResource( 5 )]
+position = Vector2( 296, 71.6473 )
+
+[node name="Spawner 2" parent="Spawners" instance=ExtResource( 5 )]
+position = Vector2( 20, 72 )

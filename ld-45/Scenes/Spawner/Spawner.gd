@@ -4,6 +4,7 @@ extends Node2D
 # var a = 2
 # var b = "text"
 export (int) var Level = 0
+export(bool) var active = true
 var Key = preload("res://Scenes/Key/Key.tscn")
 
 # Called when the node enters the scene tree for the first time.

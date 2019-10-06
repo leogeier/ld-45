@@ -14,6 +14,7 @@ var PlayerInput
 var jumptimer
 var jumppressed	:bool	#boolean
 var gracetimer_calculator
+var keys_picked_up = 1
 
 	
 
@@ -120,9 +121,20 @@ func _physics_process(delta):
 func _ready():
 	PlayerInput = preload("res://Scenes/Player/PlayerInput.gd").new()
 	PlayerInput._init()
-	PlayerInput.set_action_key("right","d")
 	PlayerInput.set_action_key("left","a")
-	PlayerInput.set_action_key("up","w")
+
 	jumptimer = 0
 	jumppressed = false
 	gracetimer_calculator = gracetime
+
+
+func _on_Key_pickup(body):
+	print("test")
+	if keys_picked_up == 1:
+		PlayerInput.set_action_key("right","d")
+	
+	if keys_picked_up == 2:
+		PlayerInput.set_action_key("up","w")
+	keys_picked_up += 1
+		
+	pass # Replace with function body.

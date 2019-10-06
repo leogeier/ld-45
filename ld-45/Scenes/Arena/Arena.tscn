@@ -48,6 +48,7 @@ points = PoolVector2Array( 0, 0, 8, 0, 8, 4, 0, 4 )
 [node name="Arena" type="Node2D"]
 script = ExtResource( 1 )
 enable_config_saving = true
+init_config_file = "config-1570373863.json"
 
 [node name="KinematicBody2D" parent="." instance=ExtResource( 2 )]
 position = Vector2( 132.783, 63.6473 )

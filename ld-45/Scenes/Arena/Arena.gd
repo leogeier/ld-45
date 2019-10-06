@@ -15,6 +15,8 @@ var arena_configs = []
 
 
 func _ready():
+	$GUI.update_keybind("left", "a")
+	
 	if enable_config_saving:
 		for s in spawners.get_children():
 			if s.active:

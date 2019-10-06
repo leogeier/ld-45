@@ -6,12 +6,14 @@ export (int) var jump_speed 		= 10
 export (int) var gravity_max_speed 		= 50
 export (float) var gravity_acceleration 		= 10
 export (float) var jumpaccelerant 		= 10
+export (float) var	gracetime			= 0.1
 
 const UP = Vector2(0,-1)
 var motion = Vector2()
 var PlayerInput
 var jumptimer
 var jumppressed	:bool	#boolean
+var gracetimer_calculator
 
 	
 
@@ -55,7 +57,7 @@ func gravity_calculation():
 	
 	
 func calculate_jump_motion(delta):
-	if is_on_floor() && jumppressed == false:		
+	if gracetimer_calculator > 0 && jumppressed == false:		
 		jumptimer = jumpaccelerant
 		motion.y = -jump_speed
 	elif jumptimer > 0:
@@ -65,6 +67,7 @@ func calculate_jump_motion(delta):
 	
 	
 func jump_movement(delta):
+		
 	#set the flag that the jumpbotton has been pressed
 	#calculate the new motion vector based on the jumptimer and floor
 	if PlayerInput.is_action_pressed("up"):		
@@ -76,6 +79,11 @@ func jump_movement(delta):
 		jumppressed = false
 		jumptimer = 0
 	
+func calculate_grace_timer(delta):
+	if is_on_floor():
+		gracetimer_calculator = gracetime
+	else:
+		gracetimer_calculator -= delta
 		
 		
 
@@ -116,3 +124,4 @@ func _ready():
 	PlayerInput.set_action_key("up","w")
 	jumptimer = 0
 	jumppressed = false
+	gracetimer_calculator = gracetime

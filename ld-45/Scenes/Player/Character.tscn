@@ -27,7 +27,7 @@ animations = [ {
 "speed": 15.0
 } ]
 
-[node name="Jesus" type="KinematicBody2D"]
+[node name="KinematicBody2D" type="KinematicBody2D"]
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -40,6 +40,6 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 2 )
 animation = "run"
-frame = 4
+frame = 5
 playing = true
 

@@ -24,17 +24,8 @@ func _process(delta):
 		
 
 func save_arena_config():
-	var arena_config = JSON.print(get_arena_config())
-	var file_name = "config-" + String(OS.get_unix_time()) + ".json"
-	var file_path = CONFIG_FOLDER + file_name
-	var file = File.new()
-	
-	print("Saving arena config as " + file_name + "...")
-	
-	file.open(file_path, File.WRITE)
-	file.store_line(arena_config)
-	file.close()
-
+	var arena_config = get_arena_config()
+	write_config_to_file(arena_config)
 
 func get_arena_config() -> Dictionary:
 	var config = {
@@ -48,7 +39,19 @@ func get_arena_config() -> Dictionary:
 			config["doors"].append(door.get_name())
 	
 	return config
+
+func write_config_to_file(config: Dictionary) -> void:
+	var config_json = JSON.print(config)
+	var file_name = "config-" + String(OS.get_unix_time()) + ".json"
+	var file_path = CONFIG_FOLDER + file_name
+	var file = File.new()
 	
+	print("Saving arena config as " + file_name + "...")
+	
+	file.open(file_path, File.WRITE)
+	file.store_line(config_json)
+	file.close()
+
 func load_arena_config(file_name: String) -> void:
 	var file = File.new()
 	var file_path = CONFIG_FOLDER + file_name

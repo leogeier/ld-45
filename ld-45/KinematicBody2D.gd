@@ -10,8 +10,10 @@ export (float) var gravity_acceleration 		= 10
 const UP = Vector2(0,-1)
 var motion = Vector2()
 
+signal PlayerConnectedKey
+
 func _ready():
-	add_to_group("Player")
+	#add_to_group("Player")
 	updateKeys()
 	
 #Needs to be called whenever a new Key Enters the Game
@@ -22,6 +24,7 @@ func updateKeys():
 		i.connect("CollectKey", self, "_on_CollectKey")
 
 func _on_CollectKey():
+	emit_signal("PlayerConnectedKey")
 	#print("Player Collected Key!")
 	pass
 
@@ -78,6 +81,10 @@ func update_motion():
 		#print("not on floor")
 		pass
 		
+		
+var level = 0		#Level for Spawners	
+func get_level():
+	return level
 		
 
 

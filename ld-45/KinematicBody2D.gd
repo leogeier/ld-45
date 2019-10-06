@@ -15,7 +15,20 @@ var jumptimer
 var jumppressed	:bool	#boolean
 var gracetimer_calculator
 
+signal PlayerConnectedKey
+
 	
+#Needs to be called whenever a new Key Enters the Game
+func updateKeys():
+	var Keys = get_tree().get_nodes_in_group("Keys")
+	for i in Keys:
+		print("Connected to Key")
+		i.connect("CollectKey", self, "_on_CollectKey")
+
+func _on_CollectKey():
+	emit_signal("PlayerConnectedKey")
+	print("Player Collected Key!")
+	pass
 
 #returns updated current motion
 #can be used for all acceleration purposes
@@ -86,6 +99,10 @@ func calculate_grace_timer(delta):
 	else:
 		gracetimer_calculator -= delta
 		
+		
+var level = 0		#Level for Spawners	
+func get_level():
+	return level
 		
 
 #updates the motion vector

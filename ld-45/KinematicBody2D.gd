@@ -12,8 +12,11 @@ const UP = Vector2(0,-1)
 var motion = Vector2()
 var PlayerInput
 var jumptimer
-var jumppressed	:bool	#boolean
+var jumppressed	:bool	#bool
 var gracetimer_calculator
+var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+var movement_actions = ["left","right","up"]
+var collected_actions = 0
 
 
 	
@@ -21,11 +24,16 @@ var gracetimer_calculator
 func updateKeys():
 	var Keys = get_tree().get_nodes_in_group("Keys")
 	for i in Keys:
-		print("Connected to Key")
 		i.connect("CollectKey", self, "_on_CollectKey")
 
-func _on_CollectKey():
-	#print("Player Collected Key!")
+	
+
+func _on_CollectKey():	
+	var key = alphabet.pop_front()
+	if collected_actions <= 2:
+		print(movement_actions[collected_actions] + "is now " + key)
+		PlayerInput.set_action_key(movement_actions[collected_actions],key)
+		collected_actions += 1
 	pass
 
 #returns updated current motion
@@ -135,9 +143,9 @@ func _physics_process(delta):
 func _ready():
 	PlayerInput = preload("res://Scenes/Player/PlayerInput.gd").new()
 	PlayerInput._init()
-	PlayerInput.set_action_key("right","d")
-	PlayerInput.set_action_key("left","a")
-	PlayerInput.set_action_key("up","w")
 	jumptimer = 0
 	jumppressed = false
 	gracetimer_calculator = gracetime
+	randomize()
+	alphabet.shuffle()
+	_on_CollectKey()

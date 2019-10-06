@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mixup2.wav-904d186cf197a81ca245fecf1c4bb7f2.sample"
+
+[deps]
+
+source_file="res://Sounds/GameMaster/mixup2.wav"
+dest_files=[ "res://.import/mixup2.wav-904d186cf197a81ca245fecf1c4bb7f2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

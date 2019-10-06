@@ -53,15 +53,23 @@ func write_config_to_file(config: Dictionary) -> void:
 	file.close()
 
 func load_arena_config(file_name: String) -> void:
+	var config = read_config_from_file(file_name)
+	if config == null:
+		return
+	
+	apply_config(config)
+
+func read_config_from_file(file_name: String):
 	var file = File.new()
 	var file_path = CONFIG_FOLDER + file_name
 	if not file.file_exists(file_path):
 		print("Arena config file does not exist: " + file_path)
-		return
+		return null
 	
 	file.open(file_path, File.READ)
-	var config = JSON.parse(file.get_line()).result
-	
+	return JSON.parse(file.get_line()).result
+
+func apply_config(config: Dictionary) -> void:
 	for door in doors.get_children():
 		door.set_closed(false)
 		

@@ -29,13 +29,10 @@ func updateKeys():
 	for i in Keys:
 		i.connect("CollectKey", self, "_on_CollectKey")
 
-func _on_CollectKey():
-	collect_sound()
-	emit_signal("PlayerConnectedKey")
-	#print("Player Collected Key!")
-	pass
 
 func _on_CollectKey():	
+	collect_sound()
+	emit_signal("PlayerConnectedKey")
 	if wasd_controls:
 		return
 	var key = alphabet.pop_front()

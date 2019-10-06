@@ -15,20 +15,23 @@ margin_right = 79.0
 margin_bottom = 21.0
 
 [node name="Keybinds" type="HBoxContainer" parent="Container"]
-margin_right = 209.0
+margin_right = 79.0
 margin_bottom = 21.0
 
 [node name="Left" parent="Container/Keybinds" instance=ExtResource( 2 )]
 margin_top = 3.0
 margin_right = 67.0
 margin_bottom = 17.0
+keybind_name = "Left"
 
 [node name="Right" parent="Container/Keybinds" instance=ExtResource( 2 )]
 margin_top = 3.0
 margin_right = 67.0
 margin_bottom = 17.0
+keybind_name = "Right"
 
 [node name="Jump" parent="Container/Keybinds" instance=ExtResource( 2 )]
 margin_top = 3.0
 margin_right = 67.0
 margin_bottom = 17.0
+keybind_name = "Jump"

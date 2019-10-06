@@ -44,3 +44,4 @@ frames = SubResource( 2 )
 animation = "run"
 frame = 5
 playing = true
+

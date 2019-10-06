@@ -57,7 +57,8 @@ func gravity_calculation():
 	
 	
 func calculate_jump_motion(delta):
-	if gracetimer_calculator > 0 && jumppressed == false:		
+	if gracetimer_calculator > 0 && jumppressed == false:	
+		print(gracetimer_calculator)	
 		jumptimer = jumpaccelerant
 		motion.y = -jump_speed
 	elif jumptimer > 0:
@@ -67,7 +68,7 @@ func calculate_jump_motion(delta):
 	
 	
 func jump_movement(delta):
-		
+	calculate_grace_timer(delta)
 	#set the flag that the jumpbotton has been pressed
 	#calculate the new motion vector based on the jumptimer and floor
 	if PlayerInput.is_action_pressed("up"):		

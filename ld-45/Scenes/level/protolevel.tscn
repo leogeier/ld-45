@@ -19,7 +19,20 @@ jumpaccelerant = 0.15
 
 [node name="key" parent="." instance=ExtResource( 3 )]
 position = Vector2( 72, 136.5 )
+GravitySpeed = 50
+keyTimeout = 1000000
+
+[node name="key3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 280, 88 )
+GravitySpeed = 50
+keyTimeout = 1000000
+
+[node name="key4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 32, 48 )
+GravitySpeed = 50
+keyTimeout = 1000000
 
 [node name="key2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 140, 224 )
+keyTimeout = 100000
 

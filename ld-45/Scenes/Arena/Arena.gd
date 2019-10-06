@@ -58,4 +58,9 @@ func load_arena_config(file_name: String) -> void:
 	
 	file.open(file_path, File.READ)
 	var config = JSON.parse(file.get_line()).result
-	print(config)
+	
+	for door in doors.get_children():
+		door.set_closed(false)
+		
+	for door in config["doors"]:
+		doors.find_node(door).set_closed(true)

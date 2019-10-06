@@ -17,9 +17,6 @@ var gracetimer_calculator
 
 signal PlayerConnectedKey
 
-func _ready():
-	#add_to_group("Player")
-	updateKeys()
 	
 #Needs to be called whenever a new Key Enters the Game
 func updateKeys():

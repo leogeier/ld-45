@@ -7,6 +7,9 @@ export (int) var gravity_max_speed 		= 50
 export (float) var gravity_acceleration 		= 10
 export (float) var jumpaccelerant 		= 10
 export (float) var	gracetime			= 0.1
+export (int) var x_width 		= 312.8
+export (int) var	y_height			= 200
+export (bool) var	wasd_controls			= false
 
 const UP = Vector2(0,-1)
 var motion = Vector2()
@@ -29,6 +32,8 @@ func updateKeys():
 	
 
 func _on_CollectKey():	
+	if wasd_controls:
+		return
 	var key = alphabet.pop_front()
 	if collected_actions <= 2:
 		print(movement_actions[collected_actions] + "is now " + key)
@@ -87,7 +92,6 @@ func gravity_calculation():
 	
 func calculate_jump_motion(delta):
 	if gracetimer_calculator > 0 && jumppressed == false:	
-		print(gracetimer_calculator)	
 		jumptimer = jumpaccelerant
 		motion.y = -jump_speed
 	elif jumptimer > 0:
@@ -139,10 +143,19 @@ func update_motion(delta):
 	#add jump to y axis
 	jump_movement(delta)
 
+func update_looping_position():
+	if !is_on_wall():
+		return	
+	if self.position.x <= 6.2:
+		
+		self.position.x = x_width
+	elif self.position.x >=x_width:
+		self.position.x = 6
 
 
 
 func _physics_process(delta):
+	update_looping_position()
 	#update motion vector
 	update_motion(delta)
 	#moving and sliding around
@@ -158,4 +171,9 @@ func _ready():
 	gracetimer_calculator = gracetime
 	randomize()
 	alphabet.shuffle()
-	_on_CollectKey()
+	if wasd_controls:
+		PlayerInput.set_action_key("up","w")
+		PlayerInput.set_action_key("left","a")
+		PlayerInput.set_action_key("right","d")
+	else:
+		_on_CollectKey()

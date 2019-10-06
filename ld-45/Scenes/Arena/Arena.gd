@@ -11,16 +11,30 @@ onready var doors = $Doors
 onready var spawners = $Spawners
 var already_saved_config = false
 var active_spawners = []
+var arena_configs = []
 
 
 func _ready():
-	if init_config_file != "":
-		load_arena_config(init_config_file)
-		
 	if enable_config_saving:
 		for s in spawners.get_children():
 			if s.active:
 				s.spawn()
+	
+	var config_dir = Directory.new()
+	if config_dir.open(CONFIG_FOLDER) != OK:
+		print("Failed to open arena config folder: " + CONFIG_FOLDER)
+		return
+	
+	config_dir.list_dir_begin(true, true)
+	var file_name = config_dir.get_next()
+	
+	while file_name != "":
+		var config = read_config_from_file(file_name)
+		arena_configs.append(config)
+		if file_name == init_config_file:
+			apply_config(config)
+		
+		file_name = config_dir.get_next()
 
 # warning-ignore:unused_argument
 func _process(delta):
@@ -64,13 +78,6 @@ func write_config_to_file(config: Dictionary) -> void:
 	file.store_line(config_json)
 	file.close()
 
-func load_arena_config(file_name: String) -> void:
-	var config = read_config_from_file(file_name)
-	if config == null:
-		return
-	
-	apply_config(config)
-
 func read_config_from_file(file_name: String):
 	var file = File.new()
 	var file_path = CONFIG_FOLDER + file_name
@@ -91,6 +98,3 @@ func apply_config(config: Dictionary) -> void:
 	active_spawners.clear()
 	for spawner in config["spawners"]:
 		active_spawners.append(spawners.find_node(spawner))
-	
-	for s in active_spawners:
-		s.spawn()

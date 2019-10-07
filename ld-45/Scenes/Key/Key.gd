@@ -56,7 +56,7 @@ func delete_self():
 	Arena.loose_life()
 
 func collectBehaviour():
-	emit_signal("CollectKey")
+	emit_signal("CollectKey", letter)
 	set_visible(false) 
 	get_parent().remove_child(self)
 	queue_free()

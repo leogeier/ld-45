@@ -31,12 +31,12 @@ func updateKeys():
 		i.connect("CollectKey", self, "_on_CollectKey")
 
 
-func _on_CollectKey():	
+func _on_CollectKey(key):	
 	collect_sound()
 	emit_signal("collect_signal")	
 	if wasd_controls:
 		return
-	var key = alphabet.pop_front()
+	#var key = alphabet.pop_front()
 	if collected_actions <= 2:
 		print(movement_actions[collected_actions] + "is now " + key)
 		PlayerInput.set_action_key(movement_actions[collected_actions],key)
@@ -206,4 +206,6 @@ func _ready():
 		PlayerInput.set_action_key("left","a")
 		PlayerInput.set_action_key("right","d")
 	else:
-		_on_CollectKey()
+		var alpha = "abcdefghijklmnopqrstuvwxyz"
+		var i = randi() % 26
+		_on_CollectKey(alpha[i])

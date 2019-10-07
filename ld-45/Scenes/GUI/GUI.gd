@@ -10,5 +10,10 @@ onready var labels = {
 	"jump": label_jump
 }
 
-func update_keybind(label, key: String) -> void:
+func _on_keyupdate(action,key):
+	update_keybind(action,key)
+	
+
+
+func update_keybind(label : String, key: String) -> void:
 	labels[label].set_key(key)

@@ -15,6 +15,8 @@ var active_spawners = []
 var arena_configs = []
 var collected_keys = 0
 var lifes_left = 3
+var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+
 	
 			
 		
@@ -37,12 +39,21 @@ func update_arena():
 	apply_config(arena_configs.front())
 	spawn_keys()
 
+func get_random_key():
+	randomize()
+	alphabet.shuffle()
+	return alphabet.pop_front()
+	
+
 func spawn_keys():
 	active_spawners.shuffle()
 	for i in range (3):
 		var spawn_inst = active_spawners.pop_front()
 		spawn_inst.set_timeout(key_despawn_time)
-		spawn_inst.spawn()		
+		var key = spawn_inst.spawn()	
+		
+		key.set_letter(get_random_key())
+			
 
 func _ready():
 	$GUI.update_keybind("left", "a")
@@ -136,6 +147,7 @@ func apply_config(config: Dictionary) -> void:
 		active_spawners.append(spawners.find_node(spawner))
 
 func _on_Jesus_collect_signal():
+		
 	collected_keys += 1
 	if (collected_keys + 3 - lifes_left) % 3 == 0:
 		update_arena()

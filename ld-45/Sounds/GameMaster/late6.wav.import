@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/late6.wav-43bbd124f00b08a6de470b939a1eb627.sample"
+
+[deps]
+
+source_file="res://Sounds/GameMaster/late6.wav"
+dest_files=[ "res://.import/late6.wav-43bbd124f00b08a6de470b939a1eb627.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

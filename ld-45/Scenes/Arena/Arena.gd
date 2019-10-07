@@ -63,7 +63,21 @@ func spawn_keys():
 			key.set_to_last()
 			
 
+
 func _ready():
+	
+	#var player = null
+	#var stream = load("res://Sounds/GameMaster/Gong.wav")
+	#stream.set_loop(true)
+	
+	#player = AudioStreamPlayer.new()
+	#add_child(player)
+	#player.set_stream(stream)
+	#player.set_volume_db(-12)
+	#player.play()
+	
+
+	
 	$KinematicBody2D.connect("movement_updated",$GUI,"_on_keyupdate")
 	
 	if enable_config_saving:
@@ -89,6 +103,7 @@ func _ready():
 	update_arena()
 	$KinematicBody2D.add_controls(get_random_key())
 	$GUI.update_collected_keys()
+
 
 
 	
@@ -162,3 +177,5 @@ func _on_Jesus_collect_signal():
 	$GUI.update_collected_keys()
 	if (collected_keys + 3 - lifes_left) % 3 == 0:
 		update_arena()
+
+

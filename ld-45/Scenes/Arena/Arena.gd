@@ -12,7 +12,17 @@ onready var spawners = $Spawners
 var already_saved_config = false
 var active_spawners = []
 var arena_configs = []
+var collected_keys = 0
+	
+			
+		
 
+func spawn_keys():
+	active_spawners.shuffle()
+	for i in range (3):
+		var spawn_inst = active_spawners.pop_front()
+		spawn_inst.set_timeout(100)
+		spawn_inst.spawn()		
 
 func _ready():
 	$GUI.update_keybind("left", "a")
@@ -38,11 +48,11 @@ func _ready():
 		
 		file_name = config_dir.get_next()
 	
+	#create an arena and spawn the keys
 	arena_configs.shuffle()
 	apply_config(arena_configs.front())
-	var spawn_inst = active_spawners.pop_front()
-	spawn_inst.set_timeout(10)
-	spawn_inst.spawn()
+	spawn_keys()
+
 	
 
 # warning-ignore:unused_argument
@@ -107,3 +117,10 @@ func apply_config(config: Dictionary) -> void:
 	active_spawners.clear()
 	for spawner in config["spawners"]:
 		active_spawners.append(spawners.find_node(spawner))
+
+func _on_Jesus_collect_signal():
+	collected_keys += 1
+	if collected_keys % 3 == 0:
+		arena_configs.shuffle()
+		apply_config(arena_configs[0])
+		spawn_keys()

@@ -20,6 +20,7 @@ var gracetimer_calculator
 var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
 var movement_actions = ["left","right","up"]
 var collected_actions = 0
+signal collect_signal
 
 
 	
@@ -32,7 +33,7 @@ func updateKeys():
 
 func _on_CollectKey():	
 	collect_sound()
-	emit_signal("PlayerConnectedKey")
+	emit_signal("collect_signal")	
 	if wasd_controls:
 		return
 	var key = alphabet.pop_front()
@@ -146,7 +147,6 @@ func update_motion(delta):
 	jump_movement(delta)
 
 func update_looping_position():
-	print(self.position.x)
 	if self.position.x <= 0:
 		print(self.position.x)
 		self.position.x = x_width

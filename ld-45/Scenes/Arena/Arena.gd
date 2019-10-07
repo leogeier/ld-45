@@ -37,6 +37,10 @@ func _ready():
 			apply_config(config)
 		
 		file_name = config_dir.get_next()
+	
+	arena_configs.shuffle()
+	apply_config(arena_configs.front())
+	active_spawners.pop_front().spawn()
 
 # warning-ignore:unused_argument
 func _process(delta):

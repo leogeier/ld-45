@@ -138,10 +138,10 @@ func read_config_from_file(file_name: String):
 
 func apply_config(config: Dictionary) -> void:
 	for door in doors.get_children():
-		door.set_closed(false)
-		
-	for door in config["doors"]:
-		doors.find_node(door).set_closed(true)
+		if config["doors"].has(door.get_name()):
+			door.closed = true
+		else:
+			door.closed = false
 	
 	active_spawners.clear()
 	for spawner in config["spawners"]:

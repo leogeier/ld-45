@@ -12,6 +12,8 @@ func _ready():
 	set_closed(closed)
 
 func set_closed(value: bool) -> void:
+	if closed == value:
+		return
 	closed = value
 	if sprite == null or collisionShape == null:
 		return

@@ -7,7 +7,7 @@ export (int) var gravity_max_speed 		= 50
 export (float) var gravity_acceleration 		= 10
 export (float) var jumpaccelerant 		= 10
 export (float) var	gracetime			= 0.1
-export (int) var x_width 		= 312.8
+export (int) var x_width 		= 320
 export (int) var	y_height			= 200
 export (bool) var	wasd_controls			= false
 
@@ -20,6 +20,7 @@ var gracetimer_calculator
 var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
 var movement_actions = ["left","right","up"]
 var collected_actions = 0
+signal collect_signal
 
 
 	
@@ -29,9 +30,10 @@ func updateKeys():
 	for i in Keys:
 		i.connect("CollectKey", self, "_on_CollectKey")
 
-	
 
 func _on_CollectKey():	
+	collect_sound()
+	emit_signal("collect_signal")	
 	if wasd_controls:
 		return
 	var key = alphabet.pop_front()
@@ -92,6 +94,7 @@ func gravity_calculation():
 	
 func calculate_jump_motion(delta):
 	if gracetimer_calculator > 0 && jumppressed == false:	
+		jump_sound()
 		jumptimer = jumpaccelerant
 		motion.y = -jump_speed
 	elif jumptimer > 0:
@@ -144,13 +147,11 @@ func update_motion(delta):
 	jump_movement(delta)
 
 func update_looping_position():
-	if !is_on_wall():
-		return	
-	if self.position.x <= 6.2:
-		
+	if self.position.x <= 0:		
 		self.position.x = x_width
 	elif self.position.x >=x_width:
-		self.position.x = 6
+		self.position.x = 0
+		pass
 
 
 
@@ -161,7 +162,34 @@ func _physics_process(delta):
 	#moving and sliding around
 	motion = move_and_slide(motion,UP)
 	
+func jump_sound():
+	var random = String(randi()%4+1)
+	var path = "JumpSounds/jump" + random
+	get_node(path).set_volume_db(-12.0) 
+	#print("Play sound: ", random)
+	get_node(path).play(0.000001)
 	
+func death_sound():
+	var random = String(randi()%2+1)
+	var path = "DeathSounds/death" + random
+	get_node(path).set_volume_db(-12.0) 
+	#print("Play sound: ", random)
+	get_node(path).play(0.000001)
+
+func collect_sound():
+	var random = String(randi()%9+1)
+	var path = "CollectSounds/key" + random
+	get_node(path).set_volume_db(-12.0) 
+	#print("Play sound: ", random)
+	get_node(path).play(0.000001)
+	
+
+func late_sound():
+	var random = String(randi()%6+1)
+	var path = "LateSounds/late" + random
+	get_node(path).set_volume_db(-12.0) 
+	#print("Play sound: ", random)
+	get_node(path).play(0.000001)
 	
 func _ready():
 	PlayerInput = preload("res://Scenes/Player/PlayerInput.gd").new()
@@ -169,6 +197,8 @@ func _ready():
 	jumptimer = 0
 	jumppressed = false
 	gracetimer_calculator = gracetime
+	#get_node("AudioStreamPlayer").set_volume_db(-12)
+	#get_node("AudioStreamPlayer").set_autoplay(false)
 	randomize()
 	alphabet.shuffle()
 	if wasd_controls:

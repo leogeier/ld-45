@@ -11,5 +11,5 @@ func set_key(new_key):
 	if key == null:
 		hide()
 	else:
-		self.set_text(keybind_name + ": " + key + "              ")
+		self.set_text(keybind_name + ": " + key + "           ")
 		show()

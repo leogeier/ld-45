@@ -3,6 +3,7 @@ extends Node2D
 # INSTRUCTIONS: Press 0 to save the current config
 
 const CONFIG_FOLDER = "res://Scenes/Arena/arenaConfigs/"
+const INTRO_FOLDER = "res://Scenes/Arena/introConfigs/"
 
 export(bool) var enable_config_saving = false
 export(String) var init_config_file = ""
@@ -13,10 +14,12 @@ onready var spawners = $Spawners
 var already_saved_config = false
 var active_spawners = []
 var arena_configs = []
+var intro_configs = []
 var collected_keys = 0
 var lifes_left = 3
 var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
 
+var intro_stage = 1
 	
 			
 		
@@ -84,8 +87,14 @@ func _ready():
 		if file_name == init_config_file:
 			start_config = config
 		file_name = config_dir.get_next()
-	if not enable_config_saving:
-		update_arena(start_config)
+	#if not enable_config_saving:
+	#	update_arena(start_config)
+	
+	intro_configs.append(read_config_from_file("intro-1.json", INTRO_FOLDER))
+	intro_configs.append(read_config_from_file("intro-2.json", INTRO_FOLDER))
+	intro_configs.append(read_config_from_file("intro-3.json", INTRO_FOLDER))
+	update_arena(intro_configs[0])
+	
 	$KinematicBody2D.add_controls(get_random_key())
 	$GUI.update_collected_keys()
 	print(doors.find_node("Door 11").closed)
@@ -134,9 +143,9 @@ func write_config_to_file(config: Dictionary) -> void:
 	file.store_line(config_json)
 	file.close()
 
-func read_config_from_file(file_name: String):
+func read_config_from_file(file_name: String, folder: String = CONFIG_FOLDER):
 	var file = File.new()
-	var file_path = CONFIG_FOLDER + file_name
+	var file_path = folder + file_name
 	if not file.file_exists(file_path):
 		print("Arena config file does not exist: " + file_path)
 		return null
@@ -156,8 +165,16 @@ func apply_config(config: Dictionary) -> void:
 		active_spawners.append(spawners.find_node(spawner))
 
 func _on_Jesus_collect_signal():
-		
 	collected_keys += 1
 	$GUI.update_collected_keys()
-	if (collected_keys + 3 - lifes_left) % 3 == 0:
-		update_arena()
+	if intro_stage < 3:
+		match intro_stage:
+			1:
+				update_arena(intro_configs[1])
+				intro_stage = 2
+			2:
+				update_arena(intro_configs[2])
+				intro_stage = 3
+	else:
+		if (collected_keys + 3 - lifes_left) % 3 == 0:
+			update_arena()

@@ -66,7 +66,6 @@ movement_speed = 100
 jump_speed = 210
 gravity_max_speed = 1000
 jumpaccelerant = 0.015
-wasd_controls = true
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 3 )

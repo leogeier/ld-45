@@ -12,6 +12,7 @@ var Arena
 var letter: String setget set_letter
 onready var sprite = $KinematicBody2D/Sprite
 const ALPHABET = "abcdefghijklmnopqrstuvwxyz"
+var last_key = false
 
 func set_Timeout(seconds):
 	keyTimeout = seconds
@@ -56,10 +57,16 @@ func delete_self():
 	Arena.loose_life()
 
 func collectBehaviour():
+	if last_key:
+		print("yaay")
+		get_tree().change_scene("res://Scenes/start_screen/start_menu.tscn")
 	emit_signal("CollectKey", letter)
 	set_visible(false) 
 	get_parent().remove_child(self)
 	queue_free()
+
+func set_to_last():
+	last_key = true
 
 #Returns the current state of the Gem
 func is_collected():

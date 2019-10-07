@@ -41,6 +41,9 @@ func update_arena():
 	spawn_keys()
 
 func get_random_key():
+	if alphabet.empty():
+		print("last key spawned")
+		return null
 	randomize()
 	alphabet.shuffle()
 	return alphabet.pop_front()
@@ -51,9 +54,11 @@ func spawn_keys():
 	for i in range (3):
 		var spawn_inst = active_spawners.pop_front()
 		spawn_inst.set_timeout(key_despawn_time)
-		var key = spawn_inst.spawn()	
-		
-		key.set_letter(get_random_key())
+		var button = get_random_key()
+		if button == null:
+			return
+		var key = spawn_inst.spawn()			
+		key.set_letter(button)
 			
 
 func _ready():

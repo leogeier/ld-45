@@ -11,6 +11,7 @@ var Player
 
 func set_Timeout(seconds):
 	keyTimeout = seconds
+	TimeLeft = keyTimeout
 
 func get_Timeout():
 	return keyTimeout

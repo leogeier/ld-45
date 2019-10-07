@@ -40,7 +40,10 @@ func _ready():
 	
 	arena_configs.shuffle()
 	apply_config(arena_configs.front())
-	active_spawners.pop_front().spawn()
+	var spawn_inst = active_spawners.pop_front()
+	spawn_inst.set_timeout(10)
+	spawn_inst.spawn()
+	
 
 # warning-ignore:unused_argument
 func _process(delta):

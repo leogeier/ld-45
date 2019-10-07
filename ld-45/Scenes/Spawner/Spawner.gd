@@ -8,6 +8,7 @@ func _ready():
 	set_visible(false)
 
 func set_timeout(seconds):
+	print( seconds)
 	SpawnerTimeout = seconds
 	pass
 

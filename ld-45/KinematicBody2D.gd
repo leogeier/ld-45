@@ -18,9 +18,10 @@ var jumptimer
 var jumppressed	:bool	#bool
 var gracetimer_calculator
 var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
-var movement_actions = ["left","right","up"]
+var movement_actions = ["jump","right","left",]
 var collected_actions = 0
 signal collect_signal
+signal movement_updated
 
 
 	
@@ -40,6 +41,7 @@ func _on_CollectKey(key):
 		print("you win")
 		return
 		
+	emit_signal("movement_updated",movement_actions[collected_actions % 3],key)
 	PlayerInput.set_action_key(movement_actions[collected_actions % 3],key)
 	print(movement_actions[collected_actions % 3] + " is now " + key)
 	collected_actions += 1
@@ -99,7 +101,7 @@ func jump_movement(delta):
 	calculate_grace_timer(delta)
 	#set the flag that the jumpbotton has been pressed
 	#calculate the new motion vector based on the jumptimer and floor
-	if PlayerInput.is_action_pressed("up"):		
+	if PlayerInput.is_action_pressed("jump"):		
 		calculate_jump_motion(delta)
 		jumppressed = true
 	#set the flag that the jumpbotton has been released	
@@ -193,11 +195,15 @@ func _ready():
 	#get_node("AudioStreamPlayer").set_autoplay(false)
 	randomize()
 	alphabet.shuffle()
+	
+	
+func add_controls(key):
 	if wasd_controls:
 		PlayerInput.set_action_key("up","w")
 		PlayerInput.set_action_key("left","a")
 		PlayerInput.set_action_key("right","d")
 	else:
-		var alpha = "abcdefghijklmnopqrstuvwxyz"
-		var i = randi() % 26
-		_on_CollectKey(alpha[i])
+		PlayerInput.set_action_key("left",key)
+		emit_signal("movement_updated","left",key)
+		print("left" + " is now " + key)
+	

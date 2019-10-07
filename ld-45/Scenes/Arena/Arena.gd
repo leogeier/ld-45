@@ -26,7 +26,7 @@ func loose_life():
 		print("you loose, please close the game now :( dont play anymore ")  		
 		get_tree().quit()
 	
-	print("oh no you lost a life you still have " + String(lifes_left) + " though")
+	print("oh no you lost a life you still have " + String(lifes_left) + "though")
 	if (collected_keys + 3 - lifes_left) % 3 == 0:
 		print("update")
 		update_arena()
@@ -56,7 +56,7 @@ func spawn_keys():
 			
 
 func _ready():
-	$GUI.update_keybind("left", "a")
+	$KinematicBody2D.connect("movement_updated",$GUI,"_on_keyupdate")
 	
 	if enable_config_saving:
 		for s in spawners.get_children():
@@ -79,6 +79,7 @@ func _ready():
 		
 		file_name = config_dir.get_next()
 	update_arena()
+	$KinematicBody2D.add_controls(get_random_key())
 
 
 	

@@ -52,7 +52,6 @@ points = PoolVector2Array( 0, 0, 8, 0, 8, 4, 0, 4 )
 ]]
 script = ExtResource( 1 )
 init_config_file = "config-1570373863.json"
-key_despawn_time = 100
 
 [node name="GUI" parent="." instance=ExtResource( 2 )]
 margin_left = 28.0

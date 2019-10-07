@@ -13,6 +13,6 @@ func _process(delta):
 	
 	if Input.is_key_pressed(81):
 		print("ready")
-		get_tree().change_scene("res://Scenes/level/protolevel.tscn")
+		get_tree().change_scene("res://Scenes/Arena/Arena.tscn")
 	pass
 

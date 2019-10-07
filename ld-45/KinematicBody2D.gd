@@ -29,9 +29,10 @@ func updateKeys():
 	for i in Keys:
 		i.connect("CollectKey", self, "_on_CollectKey")
 
-	
 
 func _on_CollectKey():	
+	collect_sound()
+	emit_signal("PlayerConnectedKey")
 	if wasd_controls:
 		return
 	var key = alphabet.pop_front()
@@ -92,6 +93,8 @@ func gravity_calculation():
 	
 func calculate_jump_motion(delta):
 	if gracetimer_calculator > 0 && jumppressed == false:	
+		jump_sound()
+		print(gracetimer_calculator)	
 		jumptimer = jumpaccelerant
 		motion.y = -jump_speed
 	elif jumptimer > 0:
@@ -161,7 +164,34 @@ func _physics_process(delta):
 	#moving and sliding around
 	motion = move_and_slide(motion,UP)
 	
+func jump_sound():
+	var random = String(randi()%4+1)
+	var path = "JumpSounds/jump" + random
+	get_node(path).set_volume_db(-12.0) 
+	#print("Play sound: ", random)
+	get_node(path).play(0.000001)
 	
+func death_sound():
+	var random = String(randi()%2+1)
+	var path = "DeathSounds/death" + random
+	get_node(path).set_volume_db(-12.0) 
+	#print("Play sound: ", random)
+	get_node(path).play(0.000001)
+
+func collect_sound():
+	var random = String(randi()%9+1)
+	var path = "CollectSounds/key" + random
+	get_node(path).set_volume_db(-12.0) 
+	#print("Play sound: ", random)
+	get_node(path).play(0.000001)
+	
+
+func late_sound():
+	var random = String(randi()%6+1)
+	var path = "LateSounds/late" + random
+	get_node(path).set_volume_db(-12.0) 
+	#print("Play sound: ", random)
+	get_node(path).play(0.000001)
 	
 func _ready():
 	PlayerInput = preload("res://Scenes/Player/PlayerInput.gd").new()
@@ -169,6 +199,8 @@ func _ready():
 	jumptimer = 0
 	jumppressed = false
 	gracetimer_calculator = gracetime
+	#get_node("AudioStreamPlayer").set_volume_db(-12)
+	#get_node("AudioStreamPlayer").set_autoplay(false)
 	randomize()
 	alphabet.shuffle()
 	if wasd_controls:

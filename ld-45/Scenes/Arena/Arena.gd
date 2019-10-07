@@ -13,15 +13,34 @@ var already_saved_config = false
 var active_spawners = []
 var arena_configs = []
 var collected_keys = 0
+var lifes_left = 3
 	
 			
 		
+func loose_life():
+	lifes_left -= 1
+	if lifes_left <= 0:
+		print("you loose, please close the game now :( dont play anymore ")  		
+		get_tree().quit()
+	
+	print("oh no you lost a life you still have " + String(lifes_left) + " though")
+	if (collected_keys + 3 - lifes_left) % 3 == 0:
+		print("update")
+		update_arena()
+	
+
+
+func update_arena():
+	#create an arena and spawn the keys
+	arena_configs.shuffle()
+	apply_config(arena_configs.front())
+	spawn_keys()
 
 func spawn_keys():
 	active_spawners.shuffle()
 	for i in range (3):
 		var spawn_inst = active_spawners.pop_front()
-		spawn_inst.set_timeout(100)
+		spawn_inst.set_timeout(5)
 		spawn_inst.spawn()		
 
 func _ready():
@@ -47,11 +66,8 @@ func _ready():
 			apply_config(config)
 		
 		file_name = config_dir.get_next()
-	
-	#create an arena and spawn the keys
-	arena_configs.shuffle()
-	apply_config(arena_configs.front())
-	spawn_keys()
+	update_arena()
+
 
 	
 
@@ -120,7 +136,5 @@ func apply_config(config: Dictionary) -> void:
 
 func _on_Jesus_collect_signal():
 	collected_keys += 1
-	if collected_keys % 3 == 0:
-		arena_configs.shuffle()
-		apply_config(arena_configs[0])
-		spawn_keys()
+	if (collected_keys + 3 - lifes_left) % 3 == 0:
+		update_arena()

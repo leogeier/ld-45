@@ -147,8 +147,7 @@ func update_motion(delta):
 	jump_movement(delta)
 
 func update_looping_position():
-	if self.position.x <= 0:
-		print(self.position.x)
+	if self.position.x <= 0:		
 		self.position.x = x_width
 	elif self.position.x >=x_width:
 		self.position.x = 0

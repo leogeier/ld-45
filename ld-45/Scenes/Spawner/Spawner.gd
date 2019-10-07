@@ -7,8 +7,7 @@ var Key = preload("res://Scenes/Key/Key.tscn")
 func _ready():
 	set_visible(false)
 
-func set_timeout(seconds):
-	print( seconds)
+func set_timeout(seconds):	
 	SpawnerTimeout = seconds
 	pass
 

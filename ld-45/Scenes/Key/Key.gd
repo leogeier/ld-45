@@ -8,6 +8,7 @@ export (int) var keyTimeout = 3
 var TimeLeft
 signal CollectKey
 var Player
+var Arena
 
 func set_Timeout(seconds):
 	keyTimeout = seconds
@@ -18,6 +19,7 @@ func get_Timeout():
 
 
 func _ready():
+	Arena = get_tree().get_root().get_children().front()
 	Player = get_tree().get_nodes_in_group("Player")[0]
 	Player.updateKeys()
 	set_visible(true)
@@ -40,6 +42,7 @@ func delete_self():
 	set_visible(false) 
 	get_parent().remove_child(self)
 	queue_free()
+	Arena.loose_life()
 
 func collectBehaviour():
 	emit_signal("CollectKey")

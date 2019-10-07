@@ -88,7 +88,6 @@ movement_speed = 100
 jump_speed = 210
 gravity_max_speed = 1000
 jumpaccelerant = 0.015
-wasd_controls = true
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 3 )
@@ -278,7 +277,7 @@ position = Vector2( 116, 71.6473 )
 position = Vector2( 210.043, 71.6594 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 7 )
+stream = ExtResource( 8 )
 volume_db = -16.44
 
 [connection signal="collect_signal" from="KinematicBody2D" to="." method="_on_Jesus_collect_signal"]

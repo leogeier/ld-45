@@ -118,7 +118,7 @@ func _ready():
 	
 	$KinematicBody2D.add_controls(get_random_key())
 	$GUI.update_collected_keys()
-	$Musi/Musi.play()
+	$AudioStreamPlayer2D.play()
 
 
 

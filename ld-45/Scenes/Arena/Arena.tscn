@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scenes/Arena/Arena.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Door/assets/door_1.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Scenes/Arena/assets/arenaTileset.png" type="Texture" id=5]
 [ext_resource path="res://Scenes/Door/Door.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Spawner/Spawner.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Sounds/MainTitle.wav" type="AudioStream" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
@@ -87,6 +88,7 @@ movement_speed = 100
 jump_speed = 210
 gravity_max_speed = 1000
 jumpaccelerant = 0.015
+wasd_controls = true
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 3 )
@@ -274,5 +276,10 @@ position = Vector2( 116, 71.6473 )
 
 [node name="Spawner 16" parent="Spawners" instance=ExtResource( 7 )]
 position = Vector2( 210.043, 71.6594 )
-active = false
+
+[node name="Musi" type="Node" parent="."]
+
+[node name="Musi" type="AudioStreamPlayer2D" parent="Musi"]
+stream = ExtResource( 8 )
+autoplay = true
 [connection signal="collect_signal" from="KinematicBody2D" to="." method="_on_Jesus_collect_signal"]

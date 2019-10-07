@@ -46,6 +46,9 @@ func update_arena(config = null):
 	spawn_keys()
 
 func get_random_key():
+	if alphabet.empty():
+		print("last key spawned")
+		return null
 	randomize()
 	alphabet.shuffle()
 	return alphabet.pop_front()
@@ -57,12 +60,30 @@ func spawn_keys():
 	for i in range (r):
 		var spawn_inst = active_spawners.pop_front()
 		spawn_inst.set_timeout(key_despawn_time)
-		var key = spawn_inst.spawn()	
-		
-		key.set_letter(get_random_key())
+		var button = get_random_key()
+		if button == null:			
+			return		
+		var key = spawn_inst.spawn()			
+		key.set_letter(button)
+		if alphabet.empty():
+			key.set_to_last()
 			
 
+
 func _ready():
+	
+	#var player = null
+	#var stream = load("res://Sounds/GameMaster/Gong.wav")
+	#stream.set_loop(true)
+	
+	#player = AudioStreamPlayer.new()
+	#add_child(player)
+	#player.set_stream(stream)
+	#player.set_volume_db(-12)
+	#player.play()
+	
+
+	
 	$KinematicBody2D.connect("movement_updated",$GUI,"_on_keyupdate")
 	
 	if enable_config_saving:
@@ -97,7 +118,9 @@ func _ready():
 	
 	$KinematicBody2D.add_controls(get_random_key())
 	$GUI.update_collected_keys()
-	print(doors.find_node("Door 11").closed)
+	$AudioStreamPlayer2D.play()
+
+
 
 	
 

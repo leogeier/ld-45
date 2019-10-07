@@ -34,10 +34,12 @@ func loose_life():
 	
 
 
-func update_arena():
-	#create an arena and spawn the keys
-	arena_configs.shuffle()
-	apply_config(arena_configs.front())
+func update_arena(config = null):
+	#create an arena and spawn the key
+	if config == null:
+		arena_configs.shuffle()
+		config = arena_configs.front()
+	apply_config(config)
 	spawn_keys()
 
 func get_random_key():
@@ -48,7 +50,8 @@ func get_random_key():
 
 func spawn_keys():
 	active_spawners.shuffle()
-	for i in range (3):
+	var r = min(3, active_spawners.size())
+	for i in range (r):
 		var spawn_inst = active_spawners.pop_front()
 		spawn_inst.set_timeout(key_despawn_time)
 		var key = spawn_inst.spawn()	
@@ -63,6 +66,8 @@ func _ready():
 		for s in spawners.get_children():
 			if s.active:
 				s.spawn()
+		for d in doors.get_children():
+			pass
 	
 	var config_dir = Directory.new()
 	if config_dir.open(CONFIG_FOLDER) != OK:
@@ -72,17 +77,18 @@ func _ready():
 	config_dir.list_dir_begin(true, true)
 	var file_name = config_dir.get_next()
 	
+	var start_config = null
 	while file_name != "":
 		var config = read_config_from_file(file_name)
 		arena_configs.append(config)
 		if file_name == init_config_file:
-			apply_config(config)
-		
+			start_config = config
 		file_name = config_dir.get_next()
-	update_arena()
+	if not enable_config_saving:
+		update_arena(start_config)
 	$KinematicBody2D.add_controls(get_random_key())
 	$GUI.update_collected_keys()
-
+	print(doors.find_node("Door 11").closed)
 
 	
 

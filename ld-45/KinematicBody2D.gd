@@ -18,7 +18,7 @@ var jumptimer
 var jumppressed	:bool	#bool
 var gracetimer_calculator
 var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
-var movement_actions = ["jump","right","left",]
+var movement_actions = ["left","jump","right",]
 var collected_actions = 0
 signal collect_signal
 signal movement_updated
@@ -203,7 +203,7 @@ func add_controls(key):
 		PlayerInput.set_action_key("left","a")
 		PlayerInput.set_action_key("right","d")
 	else:
-		PlayerInput.set_action_key("left",key)
+		PlayerInput.set_action_key("right",key)
 		emit_signal("movement_updated","left",key)
 		print("left" + " is now " + key)
 	

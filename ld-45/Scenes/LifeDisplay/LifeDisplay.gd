@@ -6,7 +6,7 @@ func _ready():
 	update_text()
 
 func update_text():
-	text = "Life: " + String(life)
+	text = "Life: " + String(life) + "       "
 
 func set_life(value: int) -> void:
 	life = value # wholesome

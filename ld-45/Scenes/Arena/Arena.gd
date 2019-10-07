@@ -173,8 +173,11 @@ func _on_Jesus_collect_signal():
 				update_arena(intro_configs[1])
 				intro_stage = 2
 			2:
+				$Bar1.hide()
 				update_arena(intro_configs[2])
 				intro_stage = 3
 	else:
+		$Bar2.hide()
+		$Bar3.hide()
 		if (collected_keys + 3 - lifes_left) % 3 == 0:
 			update_arena()

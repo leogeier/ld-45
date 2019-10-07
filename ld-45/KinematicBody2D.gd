@@ -204,6 +204,6 @@ func add_controls(key):
 		PlayerInput.set_action_key("right","d")
 	else:
 		PlayerInput.set_action_key("right",key)
-		emit_signal("movement_updated","left",key)
+		emit_signal("movement_updated","right",key)
 		print("left" + " is now " + key)
 	

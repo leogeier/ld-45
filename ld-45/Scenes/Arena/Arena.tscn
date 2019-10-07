@@ -238,6 +238,6 @@ position = Vector2( 44, 152 )
 position = Vector2( 116, 71.6473 )
 
 [node name="Spawner 16" parent="Spawners" instance=ExtResource( 6 )]
-position = Vector2( 208, 72 )
+position = Vector2( 210.043, 71.6594 )
 
 [connection signal="collect_signal" from="KinematicBody2D" to="." method="_on_Jesus_collect_signal"]

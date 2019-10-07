@@ -62,9 +62,9 @@ margin_bottom = 224.0
 [node name="KinematicBody2D" parent="." instance=ExtResource( 3 )]
 position = Vector2( 132.783, 63.6473 )
 movement_speed = 100
-jump_speed = 200
+jump_speed = 210
 gravity_max_speed = 1000
-jumpaccelerant = 0.05
+jumpaccelerant = 0.015
 wasd_controls = true
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -191,7 +191,6 @@ position = Vector2( 264, 128 )
 rotation = -1.57079
 
 [node name="Spawners" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="Spawner 1" parent="Spawners" instance=ExtResource( 6 )]
 position = Vector2( 296, 71.6473 )
@@ -240,3 +239,5 @@ position = Vector2( 116, 71.6473 )
 
 [node name="Spawner 16" parent="Spawners" instance=ExtResource( 6 )]
 position = Vector2( 208, 72 )
+
+[connection signal="collect_signal" from="KinematicBody2D" to="." method="_on_Jesus_collect_signal"]

@@ -21,7 +21,7 @@ func set_closed(value: bool) -> void:
 		staticBody.set_collision_layer_bit(0, true)
 		staticBody.set_collision_mask_bit(0, true)
 	else:
-		sprite.play("close", true)
+		sprite.play("open")
 		staticBody.set_collision_layer_bit(0, false)
 		staticBody.set_collision_mask_bit(0, false)
 

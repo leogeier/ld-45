@@ -15,6 +15,11 @@ animations = [ {
 "loop": false,
 "name": "close",
 "speed": 30.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 2 ) ],
+"loop": false,
+"name": "open",
+"speed": 1.0
 } ]
 
 [node name="Door" type="Node2D"]

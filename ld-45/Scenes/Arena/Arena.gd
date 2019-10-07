@@ -55,10 +55,12 @@ func spawn_keys():
 		var spawn_inst = active_spawners.pop_front()
 		spawn_inst.set_timeout(key_despawn_time)
 		var button = get_random_key()
-		if button == null:
-			return
+		if button == null:			
+			return		
 		var key = spawn_inst.spawn()			
 		key.set_letter(button)
+		if alphabet.empty():
+			key.set_to_last()
 			
 
 func _ready():

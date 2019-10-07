@@ -1,0 +1,242 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scenes/Arena/Arena.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/GUI/GUI.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Player/Character.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Arena/assets/arenaTileset.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/Door/Door.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Spawner/Spawner.tscn" type="PackedScene" id=6]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+points = PoolVector2Array( 0, 0, 8, 0, 8, 4, 0, 4 )
+
+[sub_resource type="TileSet" id=3]
+0/name = "arenaTileset.png 0"
+0/texture = ExtResource( 4 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 8, 8 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+1/name = "arenaTileset.png 1"
+1/texture = ExtResource( 4 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 8, 0, 8, 8 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+1/z_index = 0
+
+[node name="Arena" type="Node2D" groups=[
+"Map",
+]]
+script = ExtResource( 1 )
+init_config_file = "config-1570373863.json"
+
+[node name="GUI" parent="." instance=ExtResource( 2 )]
+margin_left = 28.0
+margin_top = 176.0
+margin_right = 288.0
+margin_bottom = 224.0
+
+[node name="KinematicBody2D" parent="." instance=ExtResource( 3 )]
+position = Vector2( 132.783, 63.6473 )
+movement_speed = 100
+jump_speed = 210
+gravity_max_speed = 1000
+jumpaccelerant = 0.015
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource( 3 )
+cell_size = Vector2( 8, 8 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 16, 0, 0, 17, 0, 0, 18, 0, 0, 19, 0, 0, 20, 0, 0, 21, 0, 0, 22, 0, 0, 23, 0, 0, 24, 0, 0, 25, 0, 0, 26, 0, 0, 27, 0, 0, 28, 0, 0, 29, 0, 0, 30, 0, 0, 31, 0, 0, 32, 0, 0, 33, 0, 0, 34, 0, 0, 35, 0, 0, 36, 0, 0, 37, 0, 0, 38, 0, 0, 39, 0, 0, 327680, 0, 0, 327685, 0, 0, 327686, 0, 0, 327691, 0, 0, 327692, 0, 0, 327693, 0, 0, 327698, 0, 0, 327699, 0, 0, 327700, 0, 0, 327701, 0, 0, 327702, 0, 0, 327703, 0, 0, 327704, 0, 0, 327705, 0, 0, 327706, 0, 0, 327707, 0, 0, 327712, 0, 0, 327713, 0, 0, 327714, 0, 0, 327719, 0, 0, 655360, 0, 0, 655365, 0, 0, 655366, 0, 0, 655367, 0, 0, 655372, 0, 0, 655373, 0, 0, 655374, 0, 0, 655379, 0, 0, 655384, 0, 0, 655385, 0, 0, 655386, 0, 0, 655387, 0, 0, 655392, 0, 0, 655393, 0, 0, 655394, 0, 0, 655399, 0, 0, 983040, 0, 0, 983041, 0, 0, 983042, 0, 0, 983047, 0, 0, 983048, 0, 0, 983049, 0, 0, 983050, 0, 0, 983051, 0, 0, 983052, 0, 0, 983053, 0, 0, 983054, 0, 0, 983059, 0, 0, 983064, 0, 0, 983065, 0, 0, 983066, 0, 0, 983067, 0, 0, 983068, 0, 0, 983069, 0, 0, 983070, 0, 0, 983071, 0, 0, 983072, 0, 0, 983077, 0, 0, 983078, 0, 0, 983079, 0, 0, 1310720, 0, 0, 1310721, 0, 0, 1310722, 0, 0, 1310723, 0, 0, 1310724, 0, 0, 1310725, 0, 0, 1310726, 0, 0, 1310727, 0, 0, 1310728, 0, 0, 1310729, 0, 0, 1310730, 0, 0, 1310731, 0, 0, 1310732, 0, 0, 1310733, 0, 0, 1310734, 0, 0, 1310735, 0, 0, 1310736, 0, 0, 1310737, 0, 0, 1310738, 0, 0, 1310739, 0, 0, 1310740, 0, 0, 1310741, 0, 0, 1310742, 0, 0, 1310743, 0, 0, 1310744, 0, 0, 1310745, 0, 0, 1310746, 0, 0, 1310747, 0, 0, 1310748, 0, 0, 1310749, 0, 0, 1310750, 0, 0, 1310751, 0, 0, 1310752, 0, 0, 1310753, 0, 0, 1310754, 0, 0, 1310755, 0, 0, 1310756, 0, 0, 1310757, 0, 0, 1310758, 0, 0, 1310759, 0, 0 )
+
+[node name="Doors" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="Door 1" parent="Doors" instance=ExtResource( 5 )]
+position = Vector2( 0, 8 )
+
+[node name="Door 2" parent="Doors" instance=ExtResource( 5 )]
+position = Vector2( 104, 8 )
+
+[node name="Door 3" parent="Doors" instance=ExtResource( 5 )]
+position = Vector2( 208, 8 )
+
+[node name="Door 4" parent="Doors" instance=ExtResource( 5 )]
+position = Vector2( 312, 8 )
+
+[node name="Door 5" parent="Doors" instance=ExtResource( 5 )]
+position = Vector2( 0, 48 )
+
+[node name="Door 6" parent="Doors" instance=ExtResource( 5 )]
+position = Vector2( 40, 48 )
+
+[node name="Door 7" parent="Doors" instance=ExtResource( 5 )]
+position = Vector2( 152, 48 )
+
+[node name="Door 8" parent="Doors" instance=ExtResource( 5 )]
+position = Vector2( 272, 48 )
+
+[node name="Door 9" parent="Doors" instance=ExtResource( 5 )]
+position = Vector2( 312, 48 )
+
+[node name="Door 10" parent="Doors" instance=ExtResource( 5 )]
+position = Vector2( 0, 88 )
+
+[node name="Door 11" parent="Doors" instance=ExtResource( 5 )]
+position = Vector2( 112, 88 )
+
+[node name="Door 12" parent="Doors" instance=ExtResource( 5 )]
+position = Vector2( 192, 88 )
+
+[node name="Door 13" parent="Doors" instance=ExtResource( 5 )]
+position = Vector2( 312, 88 )
+
+[node name="Door 14" parent="Doors" instance=ExtResource( 5 )]
+position = Vector2( 0, 128 )
+
+[node name="Door 15" parent="Doors" instance=ExtResource( 5 )]
+position = Vector2( 80, 128 )
+
+[node name="Door 16" parent="Doors" instance=ExtResource( 5 )]
+position = Vector2( 232, 128 )
+
+[node name="Door 17" parent="Doors" instance=ExtResource( 5 )]
+position = Vector2( 152, 128 )
+
+[node name="Door 18" parent="Doors" instance=ExtResource( 5 )]
+position = Vector2( 312, 128 )
+
+[node name="Door 19" parent="Doors" instance=ExtResource( 5 )]
+position = Vector2( 8, 48 )
+rotation = -1.57079
+
+[node name="Door 20" parent="Doors" instance=ExtResource( 5 )]
+position = Vector2( 56, 48 )
+rotation = -1.57079
+
+[node name="Door 21" parent="Doors" instance=ExtResource( 5 )]
+position = Vector2( 112, 48 )
+rotation = -1.57079
+
+[node name="Door 22" parent="Doors" instance=ExtResource( 5 )]
+position = Vector2( 224, 48 )
+rotation = -1.57079
+
+[node name="Door 23" parent="Doors" instance=ExtResource( 5 )]
+position = Vector2( 280, 48 )
+rotation = -1.57079
+
+[node name="Door 24" parent="Doors" instance=ExtResource( 5 )]
+position = Vector2( 280, 88 )
+rotation = -1.57079
+
+[node name="Door 25" parent="Doors" instance=ExtResource( 5 )]
+position = Vector2( 224, 88 )
+rotation = -1.57079
+
+[node name="Door 26" parent="Doors" instance=ExtResource( 5 )]
+position = Vector2( 160, 88 )
+rotation = -1.57079
+
+[node name="Door 27" parent="Doors" instance=ExtResource( 5 )]
+position = Vector2( 120, 88 )
+rotation = -1.57079
+
+[node name="Door 28" parent="Doors" instance=ExtResource( 5 )]
+position = Vector2( 64, 88 )
+rotation = -1.57079
+
+[node name="Door 29" parent="Doors" instance=ExtResource( 5 )]
+position = Vector2( 8, 88 )
+rotation = -1.57079
+
+[node name="Door 30" parent="Doors" instance=ExtResource( 5 )]
+position = Vector2( 24, 128 )
+rotation = -1.57079
+
+[node name="Door 31" parent="Doors" instance=ExtResource( 5 )]
+position = Vector2( 120, 128 )
+rotation = -1.57079
+
+[node name="Door 32" parent="Doors" instance=ExtResource( 5 )]
+position = Vector2( 160, 128 )
+rotation = -1.57079
+
+[node name="Door 33" parent="Doors" instance=ExtResource( 5 )]
+position = Vector2( 264, 128 )
+rotation = -1.57079
+
+[node name="Spawners" type="Node2D" parent="."]
+
+[node name="Spawner 1" parent="Spawners" instance=ExtResource( 6 )]
+position = Vector2( 296, 71.6473 )
+
+[node name="Spawner 2" parent="Spawners" instance=ExtResource( 6 )]
+position = Vector2( 24, 71.6473 )
+
+[node name="Spawner 3" parent="Spawners" instance=ExtResource( 6 )]
+position = Vector2( 72, 32 )
+
+[node name="Spawner 4" parent="Spawners" instance=ExtResource( 6 )]
+position = Vector2( 156, 32 )
+
+[node name="Spawner 5" parent="Spawners" instance=ExtResource( 6 )]
+position = Vector2( 248, 32 )
+
+[node name="Spawner 6" parent="Spawners" instance=ExtResource( 6 )]
+position = Vector2( 236, 112 )
+
+[node name="Spawner 7" parent="Spawners" instance=ExtResource( 6 )]
+position = Vector2( 156, 112 )
+
+[node name="Spawner 8" parent="Spawners" instance=ExtResource( 6 )]
+position = Vector2( 84, 112 )
+
+[node name="Spawner 9" parent="Spawners" instance=ExtResource( 6 )]
+position = Vector2( 28, 112 )
+
+[node name="Spawner 10" parent="Spawners" instance=ExtResource( 6 )]
+position = Vector2( 296, 112 )
+
+[node name="Spawner 11" parent="Spawners" instance=ExtResource( 6 )]
+position = Vector2( 276, 152 )
+
+[node name="Spawner 12" parent="Spawners" instance=ExtResource( 6 )]
+position = Vector2( 196, 152 )
+
+[node name="Spawner 13" parent="Spawners" instance=ExtResource( 6 )]
+position = Vector2( 120, 152 )
+
+[node name="Spawner 14" parent="Spawners" instance=ExtResource( 6 )]
+position = Vector2( 44, 152 )
+
+[node name="Spawner 15" parent="Spawners" instance=ExtResource( 6 )]
+position = Vector2( 116, 71.6473 )
+
+[node name="Spawner 16" parent="Spawners" instance=ExtResource( 6 )]
+position = Vector2( 210.043, 71.6594 )
+
+[connection signal="collect_signal" from="KinematicBody2D" to="." method="_on_Jesus_collect_signal"]

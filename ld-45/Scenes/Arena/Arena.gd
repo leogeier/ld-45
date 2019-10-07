@@ -103,6 +103,7 @@ func _ready():
 	update_arena()
 	$KinematicBody2D.add_controls(get_random_key())
 	$GUI.update_collected_keys()
+	$AudioStreamPlayer2D.play()
 
 
 

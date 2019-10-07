@@ -199,7 +199,7 @@ func _ready():
 	
 func add_controls(key):
 	if wasd_controls:
-		PlayerInput.set_action_key("up","w")
+		PlayerInput.set_action_key("jump","w")
 		PlayerInput.set_action_key("left","a")
 		PlayerInput.set_action_key("right","d")
 	else:

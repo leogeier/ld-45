@@ -7,7 +7,7 @@ export (int) var gravity_max_speed 		= 50
 export (float) var gravity_acceleration 		= 10
 export (float) var jumpaccelerant 		= 10
 export (float) var	gracetime			= 0.1
-export (int) var x_width 		= 312.8
+export (int) var x_width 		= 320
 export (int) var	y_height			= 200
 export (bool) var	wasd_controls			= false
 
@@ -94,7 +94,6 @@ func gravity_calculation():
 func calculate_jump_motion(delta):
 	if gracetimer_calculator > 0 && jumppressed == false:	
 		jump_sound()
-		print(gracetimer_calculator)	
 		jumptimer = jumpaccelerant
 		motion.y = -jump_speed
 	elif jumptimer > 0:
@@ -147,13 +146,13 @@ func update_motion(delta):
 	jump_movement(delta)
 
 func update_looping_position():
-	if !is_on_wall():
-		return	
-	if self.position.x <= 6.2:
-		
+	print(self.position.x)
+	if self.position.x <= 0:
+		print(self.position.x)
 		self.position.x = x_width
 	elif self.position.x >=x_width:
-		self.position.x = 6
+		self.position.x = 0
+		pass
 
 
 

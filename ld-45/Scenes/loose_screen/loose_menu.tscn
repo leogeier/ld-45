@@ -1,10 +1,19 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/title.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/start_screen/start_menu.gd" type="Script" id=2]
+[ext_resource path="res://theme.tres" type="Theme" id=3]
 
 [node name="Control" type="Sprite"]
 position = Vector2( 160, 120 )
 scale = Vector2( 1.25521, 1.25521 )
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = -103.303
+margin_top = -73.6928
+margin_right = 14.697
+margin_bottom = -57.6928
+theme = ExtResource( 3 )
+text = "You lost against the"

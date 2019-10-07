@@ -54,7 +54,7 @@ points = PoolVector2Array( 0, 0, 8, 0, 8, 4, 0, 4 )
 ]]
 script = ExtResource( 1 )
 init_config_file = "config-1570478488.json"
-key_despawn_time = 100
+key_despawn_time = 20
 
 [node name="pls ignore" type="Sprite" parent="."]
 position = Vector2( 160, 269 )
@@ -279,5 +279,4 @@ position = Vector2( 210.043, 71.6594 )
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 8 )
 volume_db = -16.44
-
 [connection signal="collect_signal" from="KinematicBody2D" to="." method="_on_Jesus_collect_signal"]

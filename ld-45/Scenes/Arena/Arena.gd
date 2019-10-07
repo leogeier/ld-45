@@ -28,7 +28,7 @@ func loose_life():
 	$GUI.update_life(lifes_left)
 	if lifes_left <= 0:
 		print("you loose, please close the game now :( dont play anymore ")  		
-		get_tree().quit()
+		get_tree().change_scene("res://Scenes/loose_screen/loose_menu.tscn")
 	
 	print("oh no you lost a life you still have " + String(lifes_left) + "though")
 	if (collected_keys + 3 - lifes_left) % 3 == 0:

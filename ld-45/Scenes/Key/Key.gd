@@ -59,7 +59,7 @@ func delete_self():
 func collectBehaviour():
 	if last_key:
 		print("yaay")
-		get_tree().change_scene("res://Scenes/start_screen/start_menu.tscn")
+		get_tree().change_scene("res://Scenes/win_screen/win_menu.tscn")
 	emit_signal("CollectKey", letter)
 	set_visible(false) 
 	if get_parent() != null:

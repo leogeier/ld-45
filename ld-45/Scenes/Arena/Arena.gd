@@ -6,6 +6,7 @@ const CONFIG_FOLDER = "res://Scenes/Arena/arenaConfigs/"
 
 export(bool) var enable_config_saving = false
 export(String) var init_config_file = ""
+export(int) var key_despawn_time = 10
 
 onready var doors = $Doors
 onready var spawners = $Spawners
@@ -40,7 +41,7 @@ func spawn_keys():
 	active_spawners.shuffle()
 	for i in range (3):
 		var spawn_inst = active_spawners.pop_front()
-		spawn_inst.set_timeout(5)
+		spawn_inst.set_timeout(key_despawn_time)
 		spawn_inst.spawn()		
 
 func _ready():

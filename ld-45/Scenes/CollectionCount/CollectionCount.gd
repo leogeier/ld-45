@@ -11,3 +11,4 @@ func update_text():
 
 func increment() -> void:
 	collected = collected + 1
+	update_text()

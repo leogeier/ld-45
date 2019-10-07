@@ -62,7 +62,8 @@ func collectBehaviour():
 		get_tree().change_scene("res://Scenes/start_screen/start_menu.tscn")
 	emit_signal("CollectKey", letter)
 	set_visible(false) 
-	get_parent().remove_child(self)
+	if get_parent() != null:
+		get_parent().remove_child(self)
 	queue_free()
 
 func set_to_last():

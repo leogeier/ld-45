@@ -282,4 +282,5 @@ position = Vector2( 210.043, 71.6594 )
 [node name="Musi" type="AudioStreamPlayer2D" parent="Musi"]
 stream = ExtResource( 8 )
 autoplay = true
+
 [connection signal="collect_signal" from="KinematicBody2D" to="." method="_on_Jesus_collect_signal"]

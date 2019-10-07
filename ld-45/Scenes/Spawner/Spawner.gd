@@ -1,6 +1,7 @@
 extends Node2D
 
 export (int) var SpawnerTimeout = 50
+export (bool) var active = true
 var Key = preload("res://Scenes/Key/Key.tscn")
 
 

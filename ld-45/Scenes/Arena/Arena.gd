@@ -3,6 +3,7 @@ extends Node2D
 # INSTRUCTIONS: Press 0 to save the current config
 
 const CONFIG_FOLDER = "res://Scenes/Arena/arenaConfigs/"
+const INTRO_FOLDER = "res://Scenes/Arena/introConfigs/"
 
 export(bool) var enable_config_saving = false
 export(String) var init_config_file = ""
@@ -13,10 +14,12 @@ onready var spawners = $Spawners
 var already_saved_config = false
 var active_spawners = []
 var arena_configs = []
+var intro_configs = []
 var collected_keys = 0
 var lifes_left = 3
 var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
 
+var intro_stage = 1
 	
 			
 		
@@ -34,10 +37,12 @@ func loose_life():
 	
 
 
-func update_arena():
-	#create an arena and spawn the keys
-	arena_configs.shuffle()
-	apply_config(arena_configs.front())
+func update_arena(config = null):
+	#create an arena and spawn the key
+	if config == null:
+		arena_configs.shuffle()
+		config = arena_configs.front()
+	apply_config(config)
 	spawn_keys()
 
 func get_random_key():
@@ -51,7 +56,8 @@ func get_random_key():
 
 func spawn_keys():
 	active_spawners.shuffle()
-	for i in range (3):
+	var r = min(3, active_spawners.size())
+	for i in range (r):
 		var spawn_inst = active_spawners.pop_front()
 		spawn_inst.set_timeout(key_despawn_time)
 		var button = get_random_key()
@@ -84,6 +90,8 @@ func _ready():
 		for s in spawners.get_children():
 			if s.active:
 				s.spawn()
+		for d in doors.get_children():
+			pass
 	
 	var config_dir = Directory.new()
 	if config_dir.open(CONFIG_FOLDER) != OK:
@@ -93,17 +101,24 @@ func _ready():
 	config_dir.list_dir_begin(true, true)
 	var file_name = config_dir.get_next()
 	
+	var start_config = null
 	while file_name != "":
 		var config = read_config_from_file(file_name)
 		arena_configs.append(config)
 		if file_name == init_config_file:
-			apply_config(config)
-		
+			start_config = config
 		file_name = config_dir.get_next()
-	update_arena()
+	#if not enable_config_saving:
+	#	update_arena(start_config)
+	
+	intro_configs.append(read_config_from_file("intro-1.json", INTRO_FOLDER))
+	intro_configs.append(read_config_from_file("intro-2.json", INTRO_FOLDER))
+	intro_configs.append(read_config_from_file("intro-3.json", INTRO_FOLDER))
+	update_arena(intro_configs[0])
+	
 	$KinematicBody2D.add_controls(get_random_key())
 	$GUI.update_collected_keys()
-	$AudioStreamPlayer2D.play()
+	$Musi/Musi.play()
 
 
 
@@ -151,9 +166,9 @@ func write_config_to_file(config: Dictionary) -> void:
 	file.store_line(config_json)
 	file.close()
 
-func read_config_from_file(file_name: String):
+func read_config_from_file(file_name: String, folder: String = CONFIG_FOLDER):
 	var file = File.new()
-	var file_path = CONFIG_FOLDER + file_name
+	var file_path = folder + file_name
 	if not file.file_exists(file_path):
 		print("Arena config file does not exist: " + file_path)
 		return null
@@ -173,10 +188,19 @@ func apply_config(config: Dictionary) -> void:
 		active_spawners.append(spawners.find_node(spawner))
 
 func _on_Jesus_collect_signal():
-		
 	collected_keys += 1
 	$GUI.update_collected_keys()
-	if (collected_keys + 3 - lifes_left) % 3 == 0:
-		update_arena()
-
-
+	if intro_stage < 3:
+		match intro_stage:
+			1:
+				update_arena(intro_configs[1])
+				intro_stage = 2
+			2:
+				$Bar1.hide()
+				update_arena(intro_configs[2])
+				intro_stage = 3
+	else:
+		$Bar2.hide()
+		$Bar3.hide()
+		if (collected_keys + 3 - lifes_left) % 3 == 0:
+			update_arena()

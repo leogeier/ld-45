@@ -29,17 +29,17 @@ margin_right = 67.0
 margin_bottom = 17.0
 keybind_name = "Left"
 
-[node name="Right" parent="Container/VBoxContainer/Keybinds" instance=ExtResource( 2 )]
-margin_top = 3.0
-margin_right = 67.0
-margin_bottom = 17.0
-keybind_name = "Right"
-
 [node name="Jump" parent="Container/VBoxContainer/Keybinds" instance=ExtResource( 2 )]
 margin_top = 3.0
 margin_right = 67.0
 margin_bottom = 17.0
 keybind_name = "Jump"
+
+[node name="Right" parent="Container/VBoxContainer/Keybinds" instance=ExtResource( 2 )]
+margin_top = 3.0
+margin_right = 67.0
+margin_bottom = 17.0
+keybind_name = "Right"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Container/VBoxContainer"]
 margin_top = 4.0
@@ -55,3 +55,4 @@ anchor_bottom = 0.0
 margin_left = 4.0
 margin_right = 4.0
 margin_bottom = 14.0
+

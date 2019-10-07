@@ -22,6 +22,7 @@ var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p",
 		
 func loose_life():
 	lifes_left -= 1
+	$GUI.update_life(lifes_left)
 	if lifes_left <= 0:
 		print("you loose, please close the game now :( dont play anymore ")  		
 		get_tree().quit()
@@ -80,6 +81,7 @@ func _ready():
 		file_name = config_dir.get_next()
 	update_arena()
 	$KinematicBody2D.add_controls(get_random_key())
+	$GUI.update_collected_keys()
 
 
 	
@@ -150,5 +152,6 @@ func apply_config(config: Dictionary) -> void:
 func _on_Jesus_collect_signal():
 		
 	collected_keys += 1
+	$GUI.update_collected_keys()
 	if (collected_keys + 3 - lifes_left) % 3 == 0:
 		update_arena()
